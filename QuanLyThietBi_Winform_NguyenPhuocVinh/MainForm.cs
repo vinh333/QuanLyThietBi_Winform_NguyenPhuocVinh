@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraBars;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,9 @@ using System.Windows.Forms;
 
 namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 {
-    public partial class Form1 : Form
+    public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
