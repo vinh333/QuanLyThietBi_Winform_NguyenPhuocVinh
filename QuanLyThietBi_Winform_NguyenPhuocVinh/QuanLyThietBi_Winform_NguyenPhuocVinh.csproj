@@ -106,6 +106,12 @@
     <Reference Include="ZstdSharp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
       <HintPath>..\packages\ZstdSharp.Port.0.7.1\lib\net461\ZstdSharp.dll</HintPath>
     </Reference>
+    <Reference Include="zxing, Version=0.16.9.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.9\lib\net47\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.9.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.9\lib\net47\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormChucNangThietBi.cs">
@@ -119,6 +125,18 @@
     </Compile>
     <Compile Include="FormDanhSachThietBi.Designer.cs">
       <DependentUpon>FormDanhSachThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHienThiQR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHienThiQR.Designer.cs">
+      <DependentUpon>FormHienThiQR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLichSuSuDung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLichSuSuDung.Designer.cs">
+      <DependentUpon>FormLichSuSuDung.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLoaiThietBi.cs">
       <SubType>Form</SubType>
@@ -146,6 +164,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDanhSachThietBi.resx">
       <DependentUpon>FormDanhSachThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHienThiQR.resx">
+      <DependentUpon>FormHienThiQR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLichSuSuDung.resx">
+      <DependentUpon>FormLichSuSuDung.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLoaiThietBi.resx">
       <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
@@ -183,6 +207,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\qrcode-default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nonimg.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

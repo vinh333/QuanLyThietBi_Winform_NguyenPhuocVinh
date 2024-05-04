@@ -63,6 +63,16 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nonimg {
+            get {
+                object obj = ResourceManager.GetObject("nonimg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap qrcode_default {
             get {
                 object obj = ResourceManager.GetObject("qrcode-default", resourceCulture);

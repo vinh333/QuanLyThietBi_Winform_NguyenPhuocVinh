@@ -49,6 +49,17 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.MaThietBi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenThietBi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Model = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SoSerial = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NhaSanXuat = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NgayMua = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GiaTri = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaLoaiThietBi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaChucNang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaViTri = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -73,8 +84,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gridControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(917, 377);
-            this.splitContainer1.SplitterDistance = 95;
+            this.splitContainer1.Size = new System.Drawing.Size(969, 447);
+            this.splitContainer1.SplitterDistance = 112;
             this.splitContainer1.TabIndex = 6;
             // 
             // txtTenBoPhan
@@ -103,13 +114,25 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(917, 278);
+            this.gridControl1.Size = new System.Drawing.Size(969, 331);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.MaThietBi,
+            this.TenThietBi,
+            this.Model,
+            this.SoSerial,
+            this.NhaSanXuat,
+            this.NgayMua,
+            this.GiaTri,
+            this.TinhTrang,
+            this.MaLoaiThietBi,
+            this.MaChucNang,
+            this.MaViTri});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
@@ -221,15 +244,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(917, 30);
+            this.barDockControlTop.Size = new System.Drawing.Size(969, 30);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 407);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 477);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(917, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(969, 20);
             // 
             // barDockControlLeft
             // 
@@ -237,21 +260,120 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 377);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 447);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(917, 30);
+            this.barDockControlRight.Location = new System.Drawing.Point(969, 30);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 377);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 447);
+            // 
+            // MaThietBi
+            // 
+            this.MaThietBi.Caption = "MaThietBi";
+            this.MaThietBi.MinWidth = 25;
+            this.MaThietBi.Name = "MaThietBi";
+            this.MaThietBi.Visible = true;
+            this.MaThietBi.VisibleIndex = 0;
+            this.MaThietBi.Width = 94;
+            // 
+            // TenThietBi
+            // 
+            this.TenThietBi.Caption = "TenThietBi";
+            this.TenThietBi.MinWidth = 25;
+            this.TenThietBi.Name = "TenThietBi";
+            this.TenThietBi.Visible = true;
+            this.TenThietBi.VisibleIndex = 1;
+            this.TenThietBi.Width = 94;
+            // 
+            // Model
+            // 
+            this.Model.Caption = "Model";
+            this.Model.MinWidth = 25;
+            this.Model.Name = "Model";
+            this.Model.Visible = true;
+            this.Model.VisibleIndex = 2;
+            this.Model.Width = 94;
+            // 
+            // SoSerial
+            // 
+            this.SoSerial.Caption = "SoSerial";
+            this.SoSerial.MinWidth = 25;
+            this.SoSerial.Name = "SoSerial";
+            this.SoSerial.Visible = true;
+            this.SoSerial.VisibleIndex = 3;
+            this.SoSerial.Width = 94;
+            // 
+            // NhaSanXuat
+            // 
+            this.NhaSanXuat.Caption = "NhaSanXuat";
+            this.NhaSanXuat.MinWidth = 25;
+            this.NhaSanXuat.Name = "NhaSanXuat";
+            this.NhaSanXuat.Visible = true;
+            this.NhaSanXuat.VisibleIndex = 4;
+            this.NhaSanXuat.Width = 94;
+            // 
+            // NgayMua
+            // 
+            this.NgayMua.Caption = "NgayMua";
+            this.NgayMua.MinWidth = 25;
+            this.NgayMua.Name = "NgayMua";
+            this.NgayMua.Visible = true;
+            this.NgayMua.VisibleIndex = 5;
+            this.NgayMua.Width = 94;
+            // 
+            // GiaTri
+            // 
+            this.GiaTri.Caption = "GiaTri";
+            this.GiaTri.MinWidth = 25;
+            this.GiaTri.Name = "GiaTri";
+            this.GiaTri.Visible = true;
+            this.GiaTri.VisibleIndex = 6;
+            this.GiaTri.Width = 94;
+            // 
+            // TinhTrang
+            // 
+            this.TinhTrang.Caption = "TinhTrang";
+            this.TinhTrang.MinWidth = 25;
+            this.TinhTrang.Name = "TinhTrang";
+            this.TinhTrang.Visible = true;
+            this.TinhTrang.VisibleIndex = 7;
+            this.TinhTrang.Width = 94;
+            // 
+            // MaLoaiThietBi
+            // 
+            this.MaLoaiThietBi.Caption = "MaLoaiThietBi";
+            this.MaLoaiThietBi.MinWidth = 25;
+            this.MaLoaiThietBi.Name = "MaLoaiThietBi";
+            this.MaLoaiThietBi.Visible = true;
+            this.MaLoaiThietBi.VisibleIndex = 8;
+            this.MaLoaiThietBi.Width = 94;
+            // 
+            // MaChucNang
+            // 
+            this.MaChucNang.Caption = "MaChucNang";
+            this.MaChucNang.MinWidth = 25;
+            this.MaChucNang.Name = "MaChucNang";
+            this.MaChucNang.Visible = true;
+            this.MaChucNang.VisibleIndex = 9;
+            this.MaChucNang.Width = 94;
+            // 
+            // MaViTri
+            // 
+            this.MaViTri.Caption = "MaViTri";
+            this.MaViTri.MinWidth = 25;
+            this.MaViTri.Name = "MaViTri";
+            this.MaViTri.Visible = true;
+            this.MaViTri.VisibleIndex = 10;
+            this.MaViTri.Width = 94;
             // 
             // FormLoaiThietBi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(917, 427);
+            this.ClientSize = new System.Drawing.Size(969, 497);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -293,5 +415,16 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraGrid.Columns.GridColumn MaThietBi;
+        private DevExpress.XtraGrid.Columns.GridColumn TenThietBi;
+        private DevExpress.XtraGrid.Columns.GridColumn Model;
+        private DevExpress.XtraGrid.Columns.GridColumn SoSerial;
+        private DevExpress.XtraGrid.Columns.GridColumn NhaSanXuat;
+        private DevExpress.XtraGrid.Columns.GridColumn NgayMua;
+        private DevExpress.XtraGrid.Columns.GridColumn GiaTri;
+        private DevExpress.XtraGrid.Columns.GridColumn TinhTrang;
+        private DevExpress.XtraGrid.Columns.GridColumn MaLoaiThietBi;
+        private DevExpress.XtraGrid.Columns.GridColumn MaChucNang;
+        private DevExpress.XtraGrid.Columns.GridColumn MaViTri;
     }
 }

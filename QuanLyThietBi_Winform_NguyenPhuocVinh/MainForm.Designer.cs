@@ -132,25 +132,28 @@
             // 
             this.btnThietBi.Caption = "Thiết bị";
             this.btnThietBi.Id = 1;
-            this.btnThietBi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDanToc.ImageOptions.SvgImage")));
+            this.btnThietBi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThietBi.ImageOptions.SvgImage")));
             this.btnThietBi.Name = "btnThietBi";
             this.btnThietBi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnThietBi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThietBi_ItemClick);
             // 
             // btnChucNang
             // 
             this.btnChucNang.Caption = "Chức năng";
             this.btnChucNang.Id = 2;
-            this.btnChucNang.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTonGiao.ImageOptions.SvgImage")));
+            this.btnChucNang.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnChucNang.ImageOptions.SvgImage")));
             this.btnChucNang.Name = "btnChucNang";
             this.btnChucNang.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnChucNang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnChucNang_ItemClick);
             // 
             // btnVitri
             // 
             this.btnVitri.Caption = "Vị trí";
             this.btnVitri.Id = 3;
-            this.btnVitri.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTrinhDo.ImageOptions.SvgImage")));
+            this.btnVitri.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnVitri.ImageOptions.SvgImage")));
             this.btnVitri.Name = "btnVitri";
             this.btnVitri.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnVitri.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVitri_ItemClick);
             // 
             // barButtonItem4
             // 
@@ -170,9 +173,10 @@
             // 
             this.btnLoaiThietBi.Caption = "Loại thiết bị";
             this.btnLoaiThietBi.Id = 7;
-            this.btnLoaiThietBi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnHopDong.ImageOptions.SvgImage")));
+            this.btnLoaiThietBi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLoaiThietBi.ImageOptions.SvgImage")));
             this.btnLoaiThietBi.Name = "btnLoaiThietBi";
             this.btnLoaiThietBi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnLoaiThietBi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLoaiThietBi_ItemClick);
             // 
             // btnKhenThuongKyLuat
             // 
@@ -426,6 +430,8 @@
             this.Name = "MainForm";
             this.Ribbon = this.ribbonControl1;
             this.Text = "MainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
