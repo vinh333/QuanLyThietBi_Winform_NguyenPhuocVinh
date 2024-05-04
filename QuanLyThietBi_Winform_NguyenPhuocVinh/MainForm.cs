@@ -61,5 +61,10 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             openform(typeof(FormViTriThietBi));
 
         }
+
+        private void btnLichSuSuDung_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(FormLichSuSuDung));
+        }
     }
 }

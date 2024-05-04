@@ -38,7 +38,7 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhongBan = new DevExpress.XtraBars.BarButtonItem();
             this.btnLoaiThietBi = new DevExpress.XtraBars.BarButtonItem();
-            this.btnKhenThuongKyLuat = new DevExpress.XtraBars.BarButtonItem();
+            this.btnLichSuSuDung = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.btnDieuChuyen = new DevExpress.XtraBars.BarButtonItem();
             this.btnNghiViec = new DevExpress.XtraBars.BarButtonItem();
@@ -98,7 +98,7 @@
             this.barButtonItem4,
             this.btnPhongBan,
             this.btnLoaiThietBi,
-            this.btnKhenThuongKyLuat,
+            this.btnLichSuSuDung,
             this.barButtonItem9,
             this.btnDieuChuyen,
             this.btnNghiViec,
@@ -178,12 +178,13 @@
             this.btnLoaiThietBi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnLoaiThietBi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLoaiThietBi_ItemClick);
             // 
-            // btnKhenThuongKyLuat
+            // btnLichSuSuDung
             // 
-            this.btnKhenThuongKyLuat.Caption = "Khen thưởng Kỷ luật";
-            this.btnKhenThuongKyLuat.Id = 8;
-            this.btnKhenThuongKyLuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnKhenThuongKyLuat.ImageOptions.SvgImage")));
-            this.btnKhenThuongKyLuat.Name = "btnKhenThuongKyLuat";
+            this.btnLichSuSuDung.Caption = "Lịch sử sử dụng";
+            this.btnLichSuSuDung.Id = 8;
+            this.btnLichSuSuDung.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnKhenThuongKyLuat.ImageOptions.SvgImage")));
+            this.btnLichSuSuDung.Name = "btnLichSuSuDung";
+            this.btnLichSuSuDung.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLichSuSuDung_ItemClick);
             // 
             // barButtonItem9
             // 
@@ -340,7 +341,7 @@
             // 
             // ribbonPageGroup6
             // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnKhenThuongKyLuat, true);
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnLichSuSuDung, true);
             this.ribbonPageGroup6.ItemLinks.Add(this.btnDieuChuyen, true);
             this.ribbonPageGroup6.ItemLinks.Add(this.btnNghiViec, true);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
@@ -450,7 +451,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem btnPhongBan;
         private DevExpress.XtraBars.BarButtonItem btnLoaiThietBi;
-        private DevExpress.XtraBars.BarButtonItem btnKhenThuongKyLuat;
+        private DevExpress.XtraBars.BarButtonItem btnLichSuSuDung;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.BarButtonItem btnDieuChuyen;
         private DevExpress.XtraBars.BarButtonItem btnNghiViec;
