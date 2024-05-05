@@ -30,7 +30,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         {
             _showHide(true);
             gridView1.OptionsBehavior.Editable = false; // Chặn chỉnh sửa trực tiếp
-
+            
             LoadData();
             LoadComboBoxData(); // Load dữ liệu cho các ComboBox
         }
@@ -78,7 +78,13 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         {
             try
             {
-                string query = "SELECT ThietBi.*, LoaiThietBi.TenLoaiThietBi, ChucNangThietBi.TenChucNang, ViTriDat.TenViTri FROM ThietBi JOIN LoaiThietBi ON ThietBi.MaLoaiThietBi = LoaiThietBi.MaLoaiThietBi JOIN ChucNangThietBi ON ThietBi.MaChucNang = ChucNangThietBi.MaChucNang JOIN ViTriDat ON ThietBi.MaViTri = ViTriDat.MaViTri";
+                CapNhatSoNgayConLaiDenHanBaoTri();
+
+                string query = @"SELECT ThietBi.MaThietBi, ThietBi.TenThietBi, ThietBi.Model, ThietBi.SoSerial, ThietBi.NhaSanXuat, ThietBi.NgayMua, ThietBi.GiaTri, ThietBi.TinhTrang, ThietBi.HinhAnh, ThietBi.TanSuatBaoTri, ThietBi.NgayBatDauBaoTri, ThietBi.NgayKetThucBaoTri, ThietBi.CanhBao, LoaiThietBi.TenLoaiThietBi, ChucNangThietBi.TenChucNang, ViTriDat.TenViTri 
+                FROM ThietBi 
+                JOIN LoaiThietBi ON ThietBi.MaLoaiThietBi = LoaiThietBi.MaLoaiThietBi 
+                JOIN ChucNangThietBi ON ThietBi.MaChucNang = ChucNangThietBi.MaChucNang 
+                JOIN ViTriDat ON ThietBi.MaViTri = ViTriDat.MaViTri";
                 DataTable dataTable = mySQLConnector.Select(query);
                 gridControl1.DataSource = dataTable;
             }
@@ -88,7 +94,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             }
         }
 
-
+        
 
         private void _showHide(bool kt)
         {
@@ -134,7 +140,11 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             string tenLoaiThietBi = row["TenLoaiThietBi"].ToString(); // Lấy tên loại thiết bị
             string tenChucNang = row["TenChucNang"].ToString(); // Lấy tên chức năng thiết bị
             string tenViTri = row["TenViTri"].ToString(); // Lấy tên vị trí đặt
+            string tansuatbaotri = row["TanSuatBaoTri"].ToString(); 
 
+
+            byte[] hinhAnh = (byte[])row["HinhAnh"]; // Đọc hình ảnh từ cột HINHANH
+               
             // Hiển thị thông tin lên các controls tương ứng
             txt_TenThietBi.Text = tenThietBi;
             txt_ModelThietBi.Text = model;
@@ -148,6 +158,13 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             SelectComboBoxItem(cbo_LoaiThietBi, tenLoaiThietBi);
             SelectComboBoxItem(cbo_ChucNang, tenChucNang);
             SelectComboBoxItem(cbo_ViTri, tenViTri);
+            SelectComboBoxItem(cb_TanSuatBaoTri, tansuatbaotri);
+
+            // Hiển thị hình ảnh lên pictureBox
+            if (hinhAnh != null)
+            {
+                picHinhAnh.Image = Image.FromStream(new MemoryStream(hinhAnh));
+            }
 
             checkbutton = false;
             _showHide(false);
@@ -179,11 +196,13 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             try
             {
                 int rowIndex = gridView1.FocusedRowHandle;
+
                 string tenThietBi = txt_TenThietBi.Text.Trim();
                 string model = txt_ModelThietBi.Text.Trim();
                 string soSerial = txt_SerialThietBi.Text.Trim();
                 string nhaSanXuat = txt_NhaSanXuatThietBi.Text.Trim();
                 DateTime ngayMua = dtp_NgayMua.Value;
+
                 decimal giaTri = Convert.ToDecimal(txt_GiaTriThietBi.Text.Trim());
                 string tinhTrang = cbo_TinhTrang.SelectedItem.ToString();
 
@@ -191,14 +210,57 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 int idChucNang = GetIDByTen(cbo_ChucNang.SelectedItem.ToString(), "ChucNangThietBi", "TenChucNang", "MaChucNang");
                 int idViTri = GetIDByTen(cbo_ViTri.SelectedItem.ToString(), "ViTriDat", "TenViTri", "MaViTri");
 
+                string hinhAnh = ImageToHexString(picHinhAnh.Image, picHinhAnh.Image.RawFormat);
+
+
+
+                /// Lấy tần suất bảo trì từ ComboBox
+               
+                string tansuatbaotri = cb_TanSuatBaoTri.SelectedItem.ToString();
+
+                // Khởi tạo ngày bắt đầu bảo trì là ngày hôm nay
+                DateTime ngayBatDauBaoTri = DateTime.Today;
+                DateTime ngayKetThucBaoTri;
+
+                // Xử lý tần suất bảo trì
+                switch (tansuatbaotri)
+                {
+                    case "Hàng Ngày":
+                        ngayKetThucBaoTri = ngayBatDauBaoTri.AddDays(1);
+                        break;
+                    case "Hàng Tuần":
+                        ngayKetThucBaoTri = ngayBatDauBaoTri.AddDays(7);
+                        break;
+                    case "Hàng Tháng":
+                        ngayKetThucBaoTri = ngayBatDauBaoTri.AddMonths(1);
+                        break;
+                    case "Hàng Quý":
+                        ngayKetThucBaoTri = ngayBatDauBaoTri.AddMonths(3);
+                        break;
+                    case "6 Tháng":
+                        ngayKetThucBaoTri = ngayBatDauBaoTri.AddMonths(6);
+                        break;
+                    case "1 Năm":
+                        ngayKetThucBaoTri = ngayBatDauBaoTri.AddYears(1);
+                        break;
+                    default:
+                        // Xử lý trường hợp không xác định
+                        // Ví dụ: Gán ngày kết thúc là ngày bắt đầu
+                        ngayKetThucBaoTri = ngayBatDauBaoTri;
+                        break;
+                }
+
+                //Cảnh báo bảo trì
+
 
                 if (checkbutton)
                 {
                     // Thêm mới
-                    string query = $"INSERT INTO ThietBi (TenThietBi, Model, SoSerial, NhaSanXuat, NgayMua, GiaTri, TinhTrang, MaLoaiThietBi, MaChucNang, MaViTri) " +
-                                   $"VALUES ('{tenThietBi}', '{model}', '{soSerial}', '{nhaSanXuat}', '{ngayMua.ToString("yyyy-MM-dd")}', {giaTri}, '{tinhTrang}', " +
-                                   $"{idLoaiThietBi}, {idChucNang}, {idViTri})";
+                    string query = $"INSERT INTO ThietBi (TenThietBi, Model, SoSerial, NhaSanXuat, NgayMua, GiaTri, TinhTrang, MaLoaiThietBi, MaChucNang, MaViTri, HinhAnh, TanSuatBaoTri, NgayBatDauBaoTri, NgayKetThucBaoTri) " +
+                    $"VALUES ('{tenThietBi}', '{model}', '{soSerial}', '{nhaSanXuat}', '{ngayMua.ToString("yyyy-MM-dd")}', {giaTri}, '{tinhTrang}', " +
+                    $"{idLoaiThietBi}, {idChucNang}, {idViTri},{hinhAnh}, '{tansuatbaotri}', '{ngayBatDauBaoTri.ToString("yyyy-MM-dd")}', '{ngayKetThucBaoTri.ToString("yyyy-MM-dd")}')";
                     mySQLConnector.ExecuteQuery(query);
+
                 }
                 else
                 {
@@ -206,9 +268,10 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                     DataRow row = gridView1.GetDataRow(rowIndex);
                     int maThietBi = Convert.ToInt32(row["MaThietBi"]);
                     string query = $"UPDATE ThietBi SET TenThietBi = '{tenThietBi}', Model = '{model}', SoSerial = '{soSerial}', " +
-                                   $"NhaSanXuat = '{nhaSanXuat}', NgayMua = '{ngayMua.ToString("yyyy-MM-dd")}', GiaTri = {giaTri}, " +
-                                   $"TinhTrang = '{tinhTrang}', MaLoaiThietBi = {idLoaiThietBi}, MaChucNang = {idChucNang}, MaViTri = {idViTri} " +
-                                   $"WHERE MaThietBi = {maThietBi}";
+                    $"NhaSanXuat = '{nhaSanXuat}', NgayMua = '{ngayMua.ToString("yyyy-MM-dd")}', GiaTri = {giaTri}, " +
+                    $"TinhTrang = '{tinhTrang}', MaLoaiThietBi = {idLoaiThietBi}, MaChucNang = {idChucNang}, MaViTri = {idViTri}, " +
+                    $"HinhAnh = {hinhAnh} ,TanSuatBaoTri='{tansuatbaotri}'" +
+                    $"WHERE MaThietBi = {maThietBi}";
                     mySQLConnector.ExecuteQuery(query);
                 }
 
@@ -245,6 +308,9 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             txt_ModelThietBi.Text = "";
             txt_NhaSanXuatThietBi.Text = "";
             txt_GiaTriThietBi.Text = "";
+
+            picHinhAnh.Image = Properties.Resources.nonimg;
+
 
         }
 
@@ -300,7 +366,76 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             }
         }
 
-       
+        private void Canhbao()
+        {
+           
+        }
+        private void picHinhAnh_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "Picture file (.png, .jpg) | *.png; *.jpg";
+            openFile.Title = "Chọn hình ảnh";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                picHinhAnh.Image = Image.FromFile(openFile.FileName);
+                picHinhAnh.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+        }
+
+        public string ImageToHexString(Image image, System.Drawing.Imaging.ImageFormat format)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                // Lưu hình ảnh vào MemoryStream
+                image.Save(ms, format);
+                byte[] imageBytes = ms.ToArray();
+                // Chuyển đổi sang chuỗi hex
+                string hexString = BitConverter.ToString(imageBytes).Replace("-", "");
+                return "0x" + hexString.ToLower();
+            }
+        }
+
+        private void CapNhatSoNgayConLaiDenHanBaoTri()
+        {
+            try
+            {
+                // Lấy dữ liệu từ bảng ThietBi
+                string query = "SELECT MaThietBi, NgayKetThucBaoTri FROM ThietBi";
+                DataTable dtThietBi = mySQLConnector.Select(query);
+
+                // Duyệt qua từng dòng dữ liệu để tính toán và cập nhật số ngày còn lại đến hạn bảo trì
+                foreach (DataRow row in dtThietBi.Rows)
+                {
+                    int maThietBi = Convert.ToInt32(row["MaThietBi"]);
+                    DateTime ngayKetThucBaoTri = Convert.ToDateTime(row["NgayKetThucBaoTri"]);
+
+                    // Tính toán số ngày còn lại đến hạn bảo trì
+                    int soNgayConLai = (ngayKetThucBaoTri - DateTime.Today).Days;
+
+                    // Cập nhật thông tin số ngày còn lại vào cột tương ứng trong bảng ThietBi
+                    if (soNgayConLai > 0)
+                    {
+                        query = $"UPDATE ThietBi SET Canhbao = 'Còn {soNgayConLai} ngày' WHERE MaThietBi = {maThietBi}";
+                    }
+                    else if (soNgayConLai == 0)
+                    {
+                        query = $"UPDATE ThietBi SET Canhbao = 'Hôm nay là ngày bảo trì' WHERE MaThietBi = {maThietBi}";
+                    }
+                    else
+                    {
+                        // Nếu số ngày còn lại là số âm, đó có thể là trường hợp bảo trì đã quá hạn
+                        int soNgayTre = Math.Abs(soNgayConLai); // Chuyển đổi số âm thành dương
+                        query = $"UPDATE ThietBi SET Canhbao = 'Quá hạn {soNgayTre} ngày' WHERE MaThietBi = {maThietBi}";
+                    }
+
+                    mySQLConnector.ExecuteQuery(query);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật số ngày còn lại đến hạn bảo trì: " + ex.Message);
+            }
+        }
 
 
         private int GetIDByTen(string ten, string tableName, string columnName, string idName)

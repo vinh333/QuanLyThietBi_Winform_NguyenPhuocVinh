@@ -41,7 +41,6 @@
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.btnIn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -49,8 +48,13 @@
             this.txt_timkiem = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.picHinhAnh = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cb_TanSuatBaoTri = new System.Windows.Forms.ComboBox();
+            this.dtp_NgayMua = new System.Windows.Forms.DateTimePicker();
             this.txt_GiaTriThietBi = new System.Windows.Forms.TextBox();
             this.txt_TenThietBi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,7 +63,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txt_NhaSanXuatThietBi = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dtp_NgayMua = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.txt_ModelThietBi = new System.Windows.Forms.TextBox();
             this.cbo_LoaiThietBi = new System.Windows.Forms.ComboBox();
@@ -71,7 +74,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cbo_TinhTrang = new System.Windows.Forms.ComboBox();
             this.txt_SerialThietBi = new System.Windows.Forms.TextBox();
-            this.picHinhAnh = new System.Windows.Forms.PictureBox();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -81,8 +83,8 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHinhAnh)).BeginInit();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -206,12 +208,6 @@
             this.btnIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIn.ImageOptions.SvgImage")));
             this.btnIn.Name = "btnIn";
             // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "barButtonItem3";
-            this.barButtonItem3.Id = 13;
-            this.barButtonItem3.Name = "barButtonItem3";
-            // 
             // bar3
             // 
             this.bar3.BarName = "Status bar";
@@ -270,6 +266,12 @@
             this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
             this.barButtonItem1.Name = "barButtonItem1";
             // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "barButtonItem3";
+            this.barButtonItem3.Id = 13;
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -279,8 +281,8 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Controls.Add(this.picHinhAnh);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             // 
             // splitContainer1.Panel2
             // 
@@ -289,8 +291,23 @@
             this.splitContainer1.SplitterDistance = 431;
             this.splitContainer1.TabIndex = 7;
             // 
+            // picHinhAnh
+            // 
+            this.picHinhAnh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picHinhAnh.Image = global::QuanLyThietBi_Winform_NguyenPhuocVinh.Properties.Resources.nonimg;
+            this.picHinhAnh.Location = new System.Drawing.Point(50, 34);
+            this.picHinhAnh.Name = "picHinhAnh";
+            this.picHinhAnh.Size = new System.Drawing.Size(297, 308);
+            this.picHinhAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picHinhAnh.TabIndex = 27;
+            this.picHinhAnh.TabStop = false;
+            this.picHinhAnh.Click += new System.EventHandler(this.picHinhAnh_Click);
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.cb_TanSuatBaoTri);
+            this.groupBox1.Controls.Add(this.dtp_NgayMua);
             this.groupBox1.Controls.Add(this.txt_GiaTriThietBi);
             this.groupBox1.Controls.Add(this.txt_TenThietBi);
             this.groupBox1.Controls.Add(this.label4);
@@ -299,7 +316,6 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txt_NhaSanXuatThietBi);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.dtp_NgayMua);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txt_ModelThietBi);
             this.groupBox1.Controls.Add(this.cbo_LoaiThietBi);
@@ -313,10 +329,46 @@
             this.groupBox1.Controls.Add(this.txt_SerialThietBi);
             this.groupBox1.Location = new System.Drawing.Point(390, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(731, 308);
+            this.groupBox1.Size = new System.Drawing.Size(769, 308);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin thiết bị";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label10.Location = new System.Drawing.Point(391, 222);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(126, 20);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Tần suất bảo trì";
+            // 
+            // cb_TanSuatBaoTri
+            // 
+            this.cb_TanSuatBaoTri.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_TanSuatBaoTri.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.cb_TanSuatBaoTri.FormattingEnabled = true;
+            this.cb_TanSuatBaoTri.Items.AddRange(new object[] {
+            "Hàng Ngày",
+            "Hàng Tuần",
+            "Hàng Tháng",
+            "Hàng Quý",
+            "6 Tháng",
+            "1 Năm"});
+            this.cb_TanSuatBaoTri.Location = new System.Drawing.Point(525, 217);
+            this.cb_TanSuatBaoTri.Name = "cb_TanSuatBaoTri";
+            this.cb_TanSuatBaoTri.Size = new System.Drawing.Size(210, 28);
+            this.cb_TanSuatBaoTri.TabIndex = 28;
+            // 
+            // dtp_NgayMua
+            // 
+            this.dtp_NgayMua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.dtp_NgayMua.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_NgayMua.Location = new System.Drawing.Point(141, 217);
+            this.dtp_NgayMua.Name = "dtp_NgayMua";
+            this.dtp_NgayMua.Size = new System.Drawing.Size(226, 27);
+            this.dtp_NgayMua.TabIndex = 26;
             // 
             // txt_GiaTriThietBi
             // 
@@ -349,7 +401,7 @@
             this.cbo_ChucNang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_ChucNang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cbo_ChucNang.FormattingEnabled = true;
-            this.cbo_ChucNang.Location = new System.Drawing.Point(492, 127);
+            this.cbo_ChucNang.Location = new System.Drawing.Point(525, 127);
             this.cbo_ChucNang.Name = "cbo_ChucNang";
             this.cbo_ChucNang.Size = new System.Drawing.Size(210, 28);
             this.cbo_ChucNang.TabIndex = 18;
@@ -368,7 +420,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label8.Location = new System.Drawing.Point(394, 131);
+            this.label8.Location = new System.Drawing.Point(391, 131);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 20);
             this.label8.TabIndex = 17;
@@ -392,20 +444,11 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Giá trị";
             // 
-            // dtp_NgayMua
-            // 
-            this.dtp_NgayMua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.dtp_NgayMua.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_NgayMua.Location = new System.Drawing.Point(141, 214);
-            this.dtp_NgayMua.Name = "dtp_NgayMua";
-            this.dtp_NgayMua.Size = new System.Drawing.Size(226, 27);
-            this.dtp_NgayMua.TabIndex = 3;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label9.Location = new System.Drawing.Point(394, 174);
+            this.label9.Location = new System.Drawing.Point(391, 174);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 20);
             this.label9.TabIndex = 19;
@@ -424,7 +467,7 @@
             this.cbo_LoaiThietBi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_LoaiThietBi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cbo_LoaiThietBi.FormattingEnabled = true;
-            this.cbo_LoaiThietBi.Location = new System.Drawing.Point(492, 83);
+            this.cbo_LoaiThietBi.Location = new System.Drawing.Point(525, 83);
             this.cbo_LoaiThietBi.Name = "cbo_LoaiThietBi";
             this.cbo_LoaiThietBi.Size = new System.Drawing.Size(210, 28);
             this.cbo_LoaiThietBi.TabIndex = 16;
@@ -453,7 +496,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label6.Location = new System.Drawing.Point(394, 40);
+            this.label6.Location = new System.Drawing.Point(391, 40);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 20);
             this.label6.TabIndex = 13;
@@ -464,7 +507,7 @@
             this.cbo_ViTri.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_ViTri.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cbo_ViTri.FormattingEnabled = true;
-            this.cbo_ViTri.Location = new System.Drawing.Point(492, 170);
+            this.cbo_ViTri.Location = new System.Drawing.Point(525, 170);
             this.cbo_ViTri.Name = "cbo_ViTri";
             this.cbo_ViTri.Size = new System.Drawing.Size(210, 28);
             this.cbo_ViTri.TabIndex = 20;
@@ -483,7 +526,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label7.Location = new System.Drawing.Point(394, 87);
+            this.label7.Location = new System.Drawing.Point(391, 87);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 20);
             this.label7.TabIndex = 15;
@@ -498,7 +541,7 @@
             "Đang hoạt động",
             "Đang sửa chửa",
             "Hư hỏng"});
-            this.cbo_TinhTrang.Location = new System.Drawing.Point(492, 36);
+            this.cbo_TinhTrang.Location = new System.Drawing.Point(525, 36);
             this.cbo_TinhTrang.Name = "cbo_TinhTrang";
             this.cbo_TinhTrang.Size = new System.Drawing.Size(210, 28);
             this.cbo_TinhTrang.TabIndex = 14;
@@ -510,17 +553,6 @@
             this.txt_SerialThietBi.Name = "txt_SerialThietBi";
             this.txt_SerialThietBi.Size = new System.Drawing.Size(226, 27);
             this.txt_SerialThietBi.TabIndex = 5;
-            // 
-            // picHinhAnh
-            // 
-            this.picHinhAnh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picHinhAnh.Image = global::QuanLyThietBi_Winform_NguyenPhuocVinh.Properties.Resources.nonimg;
-            this.picHinhAnh.Location = new System.Drawing.Point(43, 34);
-            this.picHinhAnh.Name = "picHinhAnh";
-            this.picHinhAnh.Size = new System.Drawing.Size(313, 308);
-            this.picHinhAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picHinhAnh.TabIndex = 10;
-            this.picHinhAnh.TabStop = false;
             // 
             // gridControl1
             // 
@@ -574,9 +606,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picHinhAnh)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picHinhAnh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
@@ -615,7 +647,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_NhaSanXuatThietBi;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dtp_NgayMua;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txt_ModelThietBi;
         private System.Windows.Forms.ComboBox cbo_LoaiThietBi;
@@ -627,9 +658,12 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbo_TinhTrang;
         private System.Windows.Forms.TextBox txt_SerialThietBi;
-        private System.Windows.Forms.PictureBox picHinhAnh;
         private DevExpress.XtraBars.BarButtonItem btn_TaoQr;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private System.Windows.Forms.DateTimePicker dtp_NgayMua;
+        private System.Windows.Forms.PictureBox picHinhAnh;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cb_TanSuatBaoTri;
     }
 }
