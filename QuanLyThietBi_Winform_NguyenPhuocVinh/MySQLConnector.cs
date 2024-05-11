@@ -88,6 +88,21 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 this.CloseConnection();
             }
         }
+        public void ExecuteQueryWithImageParameter(string query, byte[] imageData)
+        {
+            string connectionString = $"server={server};database={database};uid={username};password={password};";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@HinhAnhBaoTri", SqlDbType.Image).Value = imageData;
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
 
         internal object ExecuteScalar(string query)
         {

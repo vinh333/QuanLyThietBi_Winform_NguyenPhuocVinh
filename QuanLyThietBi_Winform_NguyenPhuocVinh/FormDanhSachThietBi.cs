@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZXing;
 
+
 namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 {
     public partial class FormDanhSachThietBi : DevExpress.XtraEditors.XtraForm
@@ -494,7 +495,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 }
             }
         }
+        
 
-       
     }
 }

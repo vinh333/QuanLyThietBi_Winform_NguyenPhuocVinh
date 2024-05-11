@@ -182,7 +182,7 @@
             // 
             this.btnLichSuSuDung.Caption = "Lịch sử sử dụng";
             this.btnLichSuSuDung.Id = 8;
-            this.btnLichSuSuDung.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnKhenThuongKyLuat.ImageOptions.SvgImage")));
+            this.btnLichSuSuDung.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLichSuSuDung.ImageOptions.SvgImage")));
             this.btnLichSuSuDung.Name = "btnLichSuSuDung";
             this.btnLichSuSuDung.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLichSuSuDung_ItemClick);
             // 
@@ -194,10 +194,11 @@
             // 
             // btnDieuChuyen
             // 
-            this.btnDieuChuyen.Caption = "Điều chuyển";
+            this.btnDieuChuyen.Caption = "Bảo Trì";
             this.btnDieuChuyen.Id = 10;
             this.btnDieuChuyen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDieuChuyen.ImageOptions.SvgImage")));
             this.btnDieuChuyen.Name = "btnDieuChuyen";
+            this.btnDieuChuyen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDieuChuyen_ItemClick);
             // 
             // btnNghiViec
             // 

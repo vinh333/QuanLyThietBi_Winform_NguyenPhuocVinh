@@ -33,8 +33,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.txtTenBoPhan = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -49,24 +47,15 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.MaThietBi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TenThietBi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Model = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SoSerial = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NhaSanXuat = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NgayMua = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.GiaTri = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.MaLoaiThietBi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.MaChucNang = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.MaViTri = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -105,37 +94,6 @@
             this.label1.Size = new System.Drawing.Size(126, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên loại thiết bị";
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.MenuManager = this.barManager1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(969, 331);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.MaThietBi,
-            this.TenThietBi,
-            this.Model,
-            this.SoSerial,
-            this.NhaSanXuat,
-            this.NgayMua,
-            this.GiaTri,
-            this.TinhTrang,
-            this.MaLoaiThietBi,
-            this.MaChucNang,
-            this.MaViTri});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // barManager1
             // 
@@ -270,104 +228,24 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 447);
             // 
-            // MaThietBi
+            // gridControl1
             // 
-            this.MaThietBi.Caption = "MaThietBi";
-            this.MaThietBi.MinWidth = 25;
-            this.MaThietBi.Name = "MaThietBi";
-            this.MaThietBi.Visible = true;
-            this.MaThietBi.VisibleIndex = 0;
-            this.MaThietBi.Width = 94;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MenuManager = this.barManager1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(969, 331);
+            this.gridControl1.TabIndex = 1;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
             // 
-            // TenThietBi
+            // gridView1
             // 
-            this.TenThietBi.Caption = "TenThietBi";
-            this.TenThietBi.MinWidth = 25;
-            this.TenThietBi.Name = "TenThietBi";
-            this.TenThietBi.Visible = true;
-            this.TenThietBi.VisibleIndex = 1;
-            this.TenThietBi.Width = 94;
-            // 
-            // Model
-            // 
-            this.Model.Caption = "Model";
-            this.Model.MinWidth = 25;
-            this.Model.Name = "Model";
-            this.Model.Visible = true;
-            this.Model.VisibleIndex = 2;
-            this.Model.Width = 94;
-            // 
-            // SoSerial
-            // 
-            this.SoSerial.Caption = "SoSerial";
-            this.SoSerial.MinWidth = 25;
-            this.SoSerial.Name = "SoSerial";
-            this.SoSerial.Visible = true;
-            this.SoSerial.VisibleIndex = 3;
-            this.SoSerial.Width = 94;
-            // 
-            // NhaSanXuat
-            // 
-            this.NhaSanXuat.Caption = "NhaSanXuat";
-            this.NhaSanXuat.MinWidth = 25;
-            this.NhaSanXuat.Name = "NhaSanXuat";
-            this.NhaSanXuat.Visible = true;
-            this.NhaSanXuat.VisibleIndex = 4;
-            this.NhaSanXuat.Width = 94;
-            // 
-            // NgayMua
-            // 
-            this.NgayMua.Caption = "NgayMua";
-            this.NgayMua.MinWidth = 25;
-            this.NgayMua.Name = "NgayMua";
-            this.NgayMua.Visible = true;
-            this.NgayMua.VisibleIndex = 5;
-            this.NgayMua.Width = 94;
-            // 
-            // GiaTri
-            // 
-            this.GiaTri.Caption = "GiaTri";
-            this.GiaTri.MinWidth = 25;
-            this.GiaTri.Name = "GiaTri";
-            this.GiaTri.Visible = true;
-            this.GiaTri.VisibleIndex = 6;
-            this.GiaTri.Width = 94;
-            // 
-            // TinhTrang
-            // 
-            this.TinhTrang.Caption = "TinhTrang";
-            this.TinhTrang.MinWidth = 25;
-            this.TinhTrang.Name = "TinhTrang";
-            this.TinhTrang.Visible = true;
-            this.TinhTrang.VisibleIndex = 7;
-            this.TinhTrang.Width = 94;
-            // 
-            // MaLoaiThietBi
-            // 
-            this.MaLoaiThietBi.Caption = "MaLoaiThietBi";
-            this.MaLoaiThietBi.MinWidth = 25;
-            this.MaLoaiThietBi.Name = "MaLoaiThietBi";
-            this.MaLoaiThietBi.Visible = true;
-            this.MaLoaiThietBi.VisibleIndex = 8;
-            this.MaLoaiThietBi.Width = 94;
-            // 
-            // MaChucNang
-            // 
-            this.MaChucNang.Caption = "MaChucNang";
-            this.MaChucNang.MinWidth = 25;
-            this.MaChucNang.Name = "MaChucNang";
-            this.MaChucNang.Visible = true;
-            this.MaChucNang.VisibleIndex = 9;
-            this.MaChucNang.Width = 94;
-            // 
-            // MaViTri
-            // 
-            this.MaViTri.Caption = "MaViTri";
-            this.MaViTri.MinWidth = 25;
-            this.MaViTri.Name = "MaViTri";
-            this.MaViTri.Visible = true;
-            this.MaViTri.VisibleIndex = 10;
-            this.MaViTri.Width = 94;
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // FormLoaiThietBi
             // 
@@ -386,9 +264,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,8 +277,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TextBox txtTenBoPhan;
         private System.Windows.Forms.Label label1;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem btnThem;
@@ -415,16 +291,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraGrid.Columns.GridColumn MaThietBi;
-        private DevExpress.XtraGrid.Columns.GridColumn TenThietBi;
-        private DevExpress.XtraGrid.Columns.GridColumn Model;
-        private DevExpress.XtraGrid.Columns.GridColumn SoSerial;
-        private DevExpress.XtraGrid.Columns.GridColumn NhaSanXuat;
-        private DevExpress.XtraGrid.Columns.GridColumn NgayMua;
-        private DevExpress.XtraGrid.Columns.GridColumn GiaTri;
-        private DevExpress.XtraGrid.Columns.GridColumn TinhTrang;
-        private DevExpress.XtraGrid.Columns.GridColumn MaLoaiThietBi;
-        private DevExpress.XtraGrid.Columns.GridColumn MaChucNang;
-        private DevExpress.XtraGrid.Columns.GridColumn MaViTri;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }
