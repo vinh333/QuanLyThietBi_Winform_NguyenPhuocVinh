@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChucNangThietBi));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.txtTenBoPhan = new System.Windows.Forms.TextBox();
+            this.txtTenChucNang = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -67,7 +67,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.txtTenBoPhan);
+            this.splitContainer1.Panel1.Controls.Add(this.txtTenChucNang);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
@@ -77,13 +77,13 @@
             this.splitContainer1.SplitterDistance = 108;
             this.splitContainer1.TabIndex = 6;
             // 
-            // txtTenBoPhan
+            // txtTenChucNang
             // 
-            this.txtTenBoPhan.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txtTenBoPhan.Location = new System.Drawing.Point(210, 28);
-            this.txtTenBoPhan.Name = "txtTenBoPhan";
-            this.txtTenBoPhan.Size = new System.Drawing.Size(184, 28);
-            this.txtTenBoPhan.TabIndex = 1;
+            this.txtTenChucNang.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtTenChucNang.Location = new System.Drawing.Point(210, 28);
+            this.txtTenChucNang.Name = "txtTenChucNang";
+            this.txtTenChucNang.Size = new System.Drawing.Size(184, 28);
+            this.txtTenChucNang.TabIndex = 1;
             // 
             // label1
             // 
@@ -160,6 +160,7 @@
             this.btnThem.Id = 0;
             this.btnThem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThem.ImageOptions.SvgImage")));
             this.btnThem.Name = "btnThem";
+            this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThem_ItemClick);
             // 
             // btnSua
             // 
@@ -167,6 +168,7 @@
             this.btnSua.Id = 1;
             this.btnSua.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSua.ImageOptions.SvgImage")));
             this.btnSua.Name = "btnSua";
+            this.btnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSua_ItemClick);
             // 
             // btnXoa
             // 
@@ -174,6 +176,7 @@
             this.btnXoa.Id = 3;
             this.btnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXoa.ImageOptions.SvgImage")));
             this.btnXoa.Name = "btnXoa";
+            this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
             // 
             // btnLuu
             // 
@@ -181,6 +184,7 @@
             this.btnLuu.Id = 2;
             this.btnLuu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLuu.ImageOptions.SvgImage")));
             this.btnLuu.Name = "btnLuu";
+            this.btnLuu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLuu_ItemClick);
             // 
             // btnHuy
             // 
@@ -188,6 +192,7 @@
             this.btnHuy.Id = 4;
             this.btnHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnHuy.ImageOptions.SvgImage")));
             this.btnHuy.Name = "btnHuy";
+            this.btnHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHuy_ItemClick);
             // 
             // btnThoat
             // 
@@ -195,6 +200,7 @@
             this.btnThoat.Id = 5;
             this.btnThoat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThoat.ImageOptions.SvgImage")));
             this.btnThoat.Name = "btnThoat";
+            this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThoat_ItemClick);
             // 
             // btnIn
             // 
@@ -259,6 +265,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormChucNangThietBi";
             this.Text = "FormChucNangThietBi";
+            this.Load += new System.EventHandler(this.FormChucNangThietBi_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -275,7 +282,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox txtTenBoPhan;
+        private System.Windows.Forms.TextBox txtTenChucNang;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;

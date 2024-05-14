@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,6 +71,18 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         private void btnDieuChuyen_ItemClick(object sender, ItemClickEventArgs e)
         {
             openform(typeof(FormBaoTri));
+        }
+
+        private void btnSuaChua_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(FormSuaChua));
+
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(FormKhoVatTu));
+
         }
     }
 }
