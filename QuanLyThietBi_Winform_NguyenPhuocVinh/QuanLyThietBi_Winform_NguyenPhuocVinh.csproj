@@ -178,6 +178,12 @@
     <Compile Include="FormViTriThietBi.Designer.cs">
       <DependentUpon>FormViTriThietBi.cs</DependentUpon>
     </Compile>
+    <Compile Include="KhoVatTu\FormDonHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KhoVatTu\FormDonHang.Designer.cs">
+      <DependentUpon>FormDonHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="KhoVatTu\FormKhoVatTu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormViTriThietBi.resx">
       <DependentUpon>FormViTriThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KhoVatTu\FormDonHang.resx">
+      <DependentUpon>FormDonHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KhoVatTu\FormKhoVatTu.resx">
       <DependentUpon>FormKhoVatTu.cs</DependentUpon>

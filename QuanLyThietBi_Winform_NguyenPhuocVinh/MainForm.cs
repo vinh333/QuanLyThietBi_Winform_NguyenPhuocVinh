@@ -84,5 +84,10 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             openform(typeof(FormKhoVatTu));
 
         }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(FormDonHang));
+        }
     }
 }
