@@ -43,7 +43,7 @@
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.btnNhapKho = new DevExpress.XtraBars.BarButtonItem();
             this.btnXuatKho = new DevExpress.XtraBars.BarButtonItem();
-            this.btnIn = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_XemChiTietNhapXuat = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -67,6 +67,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txt_NguongToiThieu = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -129,15 +130,16 @@
             this.btnXoa,
             this.btnHuy,
             this.btnThoat,
-            this.btnIn,
+            this.btn_XemChiTietNhapXuat,
             this.txt_timkiem,
             this.barButtonItem1,
             this.btn_TaoQr,
             this.barButtonItem3,
             this.btnNhapKho,
-            this.btnXuatKho});
+            this.btnXuatKho,
+            this.barButtonItem4});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 16;
+            this.barManager1.MaxItemId = 17;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.barManager1.StatusBar = this.bar3;
@@ -157,7 +159,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnNhapKho, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnXuatKho, true),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_XemChiTietNhapXuat, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -228,12 +230,13 @@
             this.btnXuatKho.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnXuatKho.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXuatKho_ItemClick);
             // 
-            // btnIn
+            // btn_XemChiTietNhapXuat
             // 
-            this.btnIn.Caption = "In";
-            this.btnIn.Id = 6;
-            this.btnIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIn.ImageOptions.SvgImage")));
-            this.btnIn.Name = "btnIn";
+            this.btn_XemChiTietNhapXuat.Caption = "Xem chi tiết nhập xuất";
+            this.btn_XemChiTietNhapXuat.Id = 6;
+            this.btn_XemChiTietNhapXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIn.ImageOptions.SvgImage")));
+            this.btn_XemChiTietNhapXuat.Name = "btn_XemChiTietNhapXuat";
+            this.btn_XemChiTietNhapXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXemChiTietNhapXuat_ItemClick);
             // 
             // bar3
             // 
@@ -459,6 +462,12 @@
             this.splitContainer1.SplitterDistance = 405;
             this.splitContainer1.TabIndex = 8;
             // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "barButtonItem4";
+            this.barButtonItem4.Id = 16;
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
             // FormKhoVatTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -502,7 +511,7 @@
         private DevExpress.XtraBars.BarButtonItem btn_TaoQr;
         private DevExpress.XtraBars.BarButtonItem btnHuy;
         private DevExpress.XtraBars.BarButtonItem btnThoat;
-        private DevExpress.XtraBars.BarButtonItem btnIn;
+        private DevExpress.XtraBars.BarButtonItem btn_XemChiTietNhapXuat;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -527,5 +536,6 @@
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraBars.BarButtonItem btnNhapKho;
         private DevExpress.XtraBars.BarButtonItem btnXuatKho;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
     }
 }

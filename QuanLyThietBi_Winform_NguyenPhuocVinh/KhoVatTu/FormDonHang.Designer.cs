@@ -38,6 +38,7 @@
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.btnIn = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -69,7 +70,8 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_NhaCungCap = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picHinhAnh)).BeginInit();
@@ -178,6 +180,15 @@
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHuy_ItemClick);
             // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Thực hiện nhập kho";
+            this.barButtonItem4.Id = 16;
+            this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNhapKho_Click);
+            // 
             // btnThoat
             // 
             this.btnThoat.Caption = "Thoát";
@@ -278,6 +289,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txt_NhaCungCap);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cbo_TrangThaiNhapKho);
             this.groupBox1.Controls.Add(this.label_TrangThaiNhapKho);
             this.groupBox1.Controls.Add(this.cbo_TrangThaiDonHang);
@@ -496,14 +509,23 @@
             this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
             this.barButtonItem2.Name = "barButtonItem2";
             // 
-            // barButtonItem4
+            // label4
             // 
-            this.barButtonItem4.Caption = "Thực hiện nhập kho";
-            this.barButtonItem4.Id = 16;
-            this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
-            this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNhapKho_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label4.Location = new System.Drawing.Point(23, 225);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(124, 20);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "Nhà cung cấp";
+            // 
+            // txt_NhaCungCap
+            // 
+            this.txt_NhaCungCap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txt_NhaCungCap.Location = new System.Drawing.Point(178, 222);
+            this.txt_NhaCungCap.Name = "txt_NhaCungCap";
+            this.txt_NhaCungCap.Size = new System.Drawing.Size(228, 27);
+            this.txt_NhaCungCap.TabIndex = 41;
             // 
             // FormDonHang
             // 
@@ -577,5 +599,7 @@
         private System.Windows.Forms.ComboBox cbo_TrangThaiNhapKho;
         private System.Windows.Forms.Label label_TrangThaiNhapKho;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private System.Windows.Forms.TextBox txt_NhaCungCap;
+        private System.Windows.Forms.Label label4;
     }
 }

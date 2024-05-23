@@ -80,7 +80,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
             btnSua.Enabled = kt;
             btnXoa.Enabled = kt;
             btnThoat.Enabled = kt;
-            btnIn.Enabled = kt;
+            btn_XemChiTietNhapXuat.Enabled = kt;
             btnNhapKho.Enabled = kt;
             btnXuatKho.Enabled = kt;
         }
@@ -219,15 +219,20 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
             {
                 if (popupSoLuongNhapXuat.ShowDialog() == DialogResult.OK)
                 {
-                    soLuong += popupSoLuongNhapXuat.Quantity; // Tăng số lượng theo giá trị nhập vào
+                    int soLuongNhap = popupSoLuongNhapXuat.Quantity;
+                    soLuong += soLuongNhap; // Tăng số lượng theo giá trị nhập vào
 
-                    string query = $"UPDATE khovattu SET SoLuong = {soLuong} WHERE MaVatTu = {maVatTu}";
-                    mySQLConnector.ExecuteQuery(query);
+                    string updateQuery = $"UPDATE khovattu SET SoLuong = {soLuong} WHERE MaVatTu = {maVatTu}";
+                    mySQLConnector.ExecuteQuery(updateQuery);
+
+                    // Chèn thông tin chi tiết nhập kho vào bảng chitietnhapxuat
+                    string insertQuery = $"INSERT INTO chitietnhapxuat (MaVatTu, SoLuong, NgayNhapXuat, LoaiGiaoDich) VALUES ({maVatTu}, {soLuongNhap}, NOW(), 'Nhập')";
+                    mySQLConnector.ExecuteQuery(insertQuery);
+
                     LoadData();
                 }
             }
         }
-
         private void btnXuatKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             int rowIndex = gridView1.FocusedRowHandle;
@@ -245,12 +250,18 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
             {
                 if (popupSoLuongNhapXuat.ShowDialog() == DialogResult.OK)
                 {
-                    if (soLuong >= popupSoLuongNhapXuat.Quantity)
+                    int soLuongXuat = popupSoLuongNhapXuat.Quantity;
+                    if (soLuong >= soLuongXuat)
                     {
-                        soLuong -= popupSoLuongNhapXuat.Quantity; // Giảm số lượng theo giá trị nhập vào
+                        soLuong -= soLuongXuat; // Giảm số lượng theo giá trị nhập vào
 
-                        string query = $"UPDATE khovattu SET SoLuong = {soLuong} WHERE MaVatTu = {maVatTu}";
-                        mySQLConnector.ExecuteQuery(query);
+                        string updateQuery = $"UPDATE khovattu SET SoLuong = {soLuong} WHERE MaVatTu = {maVatTu}";
+                        mySQLConnector.ExecuteQuery(updateQuery);
+
+                        // Chèn thông tin chi tiết xuất kho vào bảng chitietnhapxuat
+                        string insertQuery = $"INSERT INTO chitietnhapxuat (MaVatTu, SoLuong, NgayNhapXuat, LoaiGiaoDich) VALUES ({maVatTu}, {soLuongXuat}, NOW(), 'Xuất')";
+                        mySQLConnector.ExecuteQuery(insertQuery);
+
                         LoadData();
                     }
                     else
@@ -260,6 +271,15 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
                 }
             }
         }
+
+        private void btnXemChiTietNhapXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FormChiTietNhapXuat formChiTietNhapXuat = new FormChiTietNhapXuat();
+            formChiTietNhapXuat.ShowDialog();
+        }
+
+
+
 
         private void picHinhAnh_Click(object sender, EventArgs e)
         {

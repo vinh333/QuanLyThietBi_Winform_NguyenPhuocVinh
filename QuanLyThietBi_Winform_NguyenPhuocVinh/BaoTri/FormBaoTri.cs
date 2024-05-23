@@ -111,7 +111,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 string query;
                 
                 // Load data for cbo_ChucVu
-                query = "SELECT HOTEN FROM nhanvien"; // Chỉnh sửa query tương ứng
+                query = "SELECT HOTEN FROM kythuatvien"; // Chỉnh sửa query tương ứng
                 System.Data.DataTable dtChucVu = mySQLConnector.Select(query);
                 foreach (DataRow row in dtChucVu.Rows)
                 {
@@ -149,7 +149,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 
                 // Lấy bản ghi bảo trì mới nhất cho thiết bị đã chọn
                 string queryLatestMaintenance = $@"
-            SELECT MaLichSuBaoTri, NgayBaoTri, MoTa, TrangThai, TienDo, HinhAnhBaoTri, BienBanBaoTri, TenBienBanBaoTri, MANV
+            SELECT MaLichSuBaoTri, NgayBaoTri, MoTa, TrangThai, TienDo, HinhAnhBaoTri, BienBanBaoTri, TenBienBanBaoTri, MAKTV
                 FROM lichsubaotri
                 WHERE MaThietBi = {maThietBi} AND TienDo = 'Đang bảo trì'
                 ORDER BY NgayBaoTri DESC
@@ -184,8 +184,8 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                         picHinhAnh.Image = Image.FromStream(new MemoryStream(hinhAnh));
                     }
                     txt_TenBaoCao.Text = (maintenanceRecord["TenBienBanBaoTri"] != DBNull.Value) ? maintenanceRecord["TenBienBanBaoTri"].ToString() : "";
-                    int MaNv = Convert.ToInt32(maintenanceRecord["MANV"]);
-                    SelectComboBoxItem(cbo_NguoiThucHien, GetTenById(MaNv.ToString(), "nhanvien", "HOTEN", "MANV"));
+                    int MaNv = Convert.ToInt32(maintenanceRecord["MAKTV"]);
+                    SelectComboBoxItem(cbo_NguoiThucHien, GetTenById(MaNv.ToString(), "kythuatvien", "HOTEN", "MAKTV"));
 
                 }
                 catch 
@@ -285,7 +285,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 string ngayThucHien = dtp_NgayThucHien.Value.ToString("yyyy-MM-dd"); // Định dạng ngày theo chuẩn yyyy-MM-dd
                 string thoiHanBaoTri = txt_ThoiHanBaoTri.Text.Trim();
                 string ghiChu = txt_GhiChu.Text.Trim();
-                int maNguoiThucHien = GetIDByTen(cbo_NguoiThucHien.SelectedItem.ToString(), "nhanvien", "HOTEN", "MANV");
+                int maNguoiThucHien = GetIDByTen(cbo_NguoiThucHien.SelectedItem.ToString(), "kythuatvien", "HOTEN", "MAKTV");
                 string tienDo = cb_TienDo.Text.Trim();
                 string tenBaoCao = txt_TenBaoCao.Text.Trim();
 
@@ -369,7 +369,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 if (checkTrangThai)
                 {
                     // Thêm mới
-                    string query = $"INSERT INTO lichsubaotri ( MaThietBi, NgayBaoTri, MoTa, TrangThai, TienDo, HinhAnhBaoTri, TenBienBanBaoTri, BienBanBaoTri, MANV) VALUES " +
+                    string query = $"INSERT INTO lichsubaotri ( MaThietBi, NgayBaoTri, MoTa, TrangThai, TienDo, HinhAnhBaoTri, TenBienBanBaoTri, BienBanBaoTri, MAKTV) VALUES " +
                                    $"( '{maThietBi}', '{ngayThucHien}', '{ghiChu}', '{trangThai}', '{tienDo}', {hinhAnhHexString} , '{tenBaoCao}', '{hexString}', '{maNguoiThucHien}')";
 
                     
@@ -379,7 +379,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 {
                     // Sửa
                     string query = $"UPDATE lichsubaotri SET MaThietBi = '{maThietBi}', NgayBaoTri = '{ngayThucHien}', MoTa = '{ghiChu}', TrangThai = '{trangThai}', " +
-                                   $"TienDo = '{tienDo}', HinhAnhBaoTri = {hinhAnhHexString}, TenBienBanBaoTri = '{tenBaoCao}', BienBanBaoTri = '{hexString}' , MANV = '{maNguoiThucHien}' " +
+                                   $"TienDo = '{tienDo}', HinhAnhBaoTri = {hinhAnhHexString}, TenBienBanBaoTri = '{tenBaoCao}', BienBanBaoTri = '{hexString}' , MAKTV = '{maNguoiThucHien}' " +
                                    $"WHERE MaLichSuBaoTri = '{maLichSuBaoTri}'";
 
                    

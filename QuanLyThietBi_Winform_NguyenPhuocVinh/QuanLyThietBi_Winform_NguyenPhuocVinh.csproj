@@ -39,12 +39,17 @@
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Charts.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.Desktop.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Drawing.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v22.2.UI, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v22.2.UI, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v22.2.Wizard, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -142,6 +147,12 @@
     <Compile Include="BaoTri\XtraForm1.Designer.cs">
       <DependentUpon>XtraForm1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormBieuDo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBieuDo.Designer.cs">
+      <DependentUpon>FormBieuDo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChucNangThietBi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,11 +183,23 @@
     <Compile Include="FormLoaiThietBi.Designer.cs">
       <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormViTriThietBi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormViTriThietBi.Designer.cs">
       <DependentUpon>FormViTriThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KhoVatTu\FormChiTietNhapXuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KhoVatTu\FormChiTietNhapXuat.Designer.cs">
+      <DependentUpon>FormChiTietNhapXuat.cs</DependentUpon>
     </Compile>
     <Compile Include="KhoVatTu\FormDonHang.cs">
       <SubType>Form</SubType>
@@ -226,6 +249,9 @@
     <EmbeddedResource Include="BaoTri\XtraForm1.resx">
       <DependentUpon>XtraForm1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormBieuDo.resx">
+      <DependentUpon>FormBieuDo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormChucNangThietBi.resx">
       <DependentUpon>FormChucNangThietBi.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,8 +267,14 @@
     <EmbeddedResource Include="FormLoaiThietBi.resx">
       <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormViTriThietBi.resx">
       <DependentUpon>FormViTriThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KhoVatTu\FormChiTietNhapXuat.resx">
+      <DependentUpon>FormChiTietNhapXuat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KhoVatTu\FormDonHang.resx">
       <DependentUpon>FormDonHang.cs</DependentUpon>
@@ -295,6 +327,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Screenshot 2024-05-06 062744.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-key-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-40.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

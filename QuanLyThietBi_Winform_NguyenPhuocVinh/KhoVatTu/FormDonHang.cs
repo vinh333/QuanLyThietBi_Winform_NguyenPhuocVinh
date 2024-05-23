@@ -60,6 +60,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
                                 donhang.NgayGiaoHang,
                                 donhang.TrangThaiDonHang,
                                 donhang.TrangThaiNhapKho,
+                                donhang.NhaCungCap,
                                 khovattu.TenVatTu
                             FROM 
                                 donhang
@@ -112,6 +113,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
             txt_SoLuong.Text = row["SoLuong"].ToString();
             dtp_NgayDatHang.Value = Convert.ToDateTime(row["NgayDatHang"]);
             dtp_NgayGiaoHang.Value = Convert.ToDateTime(row["NgayGiaoHang"]);
+            txt_NhaCungCap.Text = row["NhaCungCap"].ToString();
 
             SelectComboBoxItem(cbo_TrangThaiDonHang, row["TrangThaiDonHang"].ToString());
             SelectComboBoxItem(cbo_TrangThaiNhapKho, row["TrangThaiNhapKho"].ToString());
@@ -140,18 +142,19 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
                 DateTime ngayGiaoHang = dtp_NgayGiaoHang.Value;
                 string trangThaiDonHang = cbo_TrangThaiDonHang.SelectedItem.ToString();
                 string trangThaiNhapKho = cbo_TrangThaiNhapKho.SelectedItem != null ? cbo_TrangThaiNhapKho.SelectedItem.ToString() : null;
+                string nhaCungCap = txt_NhaCungCap.Text.Trim();
                 int maVatTu = GetIDByTen(cbo_VatTu.SelectedItem.ToString(), "khovattu", "TenVatTu", "MaVatTu");
 
                 string query;
                 if (checkbutton) // Thêm mới đơn hàng
                 {
-                    query = $"INSERT INTO donhang (MaDonHang, SoLuong, NgayDatHang, NgayGiaoHang, TrangThaiDonHang, TrangThaiNhapKho, MaVatTu) " +
-                            $"VALUES ('{maDonHang}', {soLuong}, '{ngayDatHang:yyyy-MM-dd}', '{ngayGiaoHang:yyyy-MM-dd}', '{trangThaiDonHang}', '{trangThaiNhapKho}', {maVatTu})";
+                    query = $"INSERT INTO donhang (MaDonHang, SoLuong, NgayDatHang, NgayGiaoHang, TrangThaiDonHang, TrangThaiNhapKho, NhaCungCap, MaVatTu) " +
+                            $"VALUES ('{maDonHang}', {soLuong}, '{ngayDatHang:yyyy-MM-dd}', '{ngayGiaoHang:yyyy-MM-dd}', '{trangThaiDonHang}', '{trangThaiNhapKho}', '{nhaCungCap}', {maVatTu})";
                 }
                 else // Cập nhật đơn hàng
                 {
                     query = $"UPDATE donhang SET SoLuong = {soLuong}, NgayDatHang = '{ngayDatHang:yyyy-MM-dd}', NgayGiaoHang = '{ngayGiaoHang:yyyy-MM-dd}', " +
-                            $"TrangThaiDonHang = '{trangThaiDonHang}', TrangThaiNhapKho = '{trangThaiNhapKho}', MaVatTu = {maVatTu} WHERE MaDonHang = '{maDonHang}'";
+                            $"TrangThaiDonHang = '{trangThaiDonHang}', TrangThaiNhapKho = '{trangThaiNhapKho}', NhaCungCap = '{nhaCungCap}', MaVatTu = {maVatTu} WHERE MaDonHang = '{maDonHang}'";
                 }
 
                 mySQLConnector.ExecuteQuery(query);
@@ -176,12 +179,13 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa dòng này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 DataRow row = gridView1.GetDataRow(rowIndex);
-                int maVatTu = Convert.ToInt32(row["MaVatTu"]);
-                string query = $"DELETE FROM khovattu WHERE MaVatTu = {maVatTu}";
+                int maDonHang = Convert.ToInt32(row["MaDonHang"]);
+                string query = $"DELETE FROM donhang WHERE MaDonHang = {maDonHang}";
                 mySQLConnector.ExecuteQuery(query);
                 LoadData();
             }
         }
+
         private void btnNhapKho_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             int rowIndex = gridView1.FocusedRowHandle;
@@ -209,11 +213,17 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
                 {
                     try
                     {
+                        // Update the inventory
                         string updateQuery = $"UPDATE khovattu SET SoLuong = SoLuong + {soLuong} WHERE MaVatTu = {maVatTu}";
                         mySQLConnector.ExecuteQuery(updateQuery);
 
+                        // Update the order status
                         string updateDonHangQuery = $"UPDATE donhang SET TrangThaiNhapKho = 'Đã nhập kho' WHERE MaDonHang = '{row["MaDonHang"].ToString()}'";
                         mySQLConnector.ExecuteQuery(updateDonHangQuery);
+
+                        // Insert the record into chitietnhapxuat table
+                        string insertChiTietQuery = $"INSERT INTO chitietnhapxuat (MaVatTu, SoLuong, NgayNhapXuat, LoaiGiaoDich) VALUES ({maVatTu}, {soLuong}, NOW(), 'Nhập')";
+                        mySQLConnector.ExecuteQuery(insertChiTietQuery);
 
                         LoadData();
                         MessageBox.Show("Nhập kho thành công.");
@@ -235,6 +245,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
         }
 
 
+
         private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _showHide(true);
@@ -252,6 +263,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
             cbo_TrangThaiDonHang.SelectedIndex = -1;
             cbo_TrangThaiNhapKho.SelectedIndex = -1;
             txt_SoLuong.Text = "";
+            txt_NhaCungCap.Text = "";
             dtp_NgayDatHang.Value = DateTime.Now;
             dtp_NgayGiaoHang.Value = DateTime.Now;
 
