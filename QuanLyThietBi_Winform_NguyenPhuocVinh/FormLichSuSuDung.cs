@@ -2,16 +2,9 @@
 using DevExpress.XtraGrid;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ZXing;
 
 namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 {
@@ -37,12 +30,12 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 
         private void LoadComboBoxData()
         {
-            // Load data for cbo_BoPhan, cbo_ChucVu, cbo_DanToc, cbo_PhongBan, cbo_TonGiao, cbo_TrinhDo
+            // Load data for cbo_ThietBi, cbo_NguoiDung
             try
             {
                 string query;
                 // Load data for cbo_loaithietbi
-                query = "SELECT TenThietBi FROM thietbi"; // Chỉnh sửa query tương ứng
+                query = "SELECT TenThietBi FROM thietbi";
                 DataTable dtBoPhan = mySQLConnector.Select(query);
                 foreach (DataRow row in dtBoPhan.Rows)
                 {
@@ -50,16 +43,12 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 }
 
                 // Load data for cbo_ChucVu
-                query = "SELECT HOTEN FROM nhanvien"; // Chỉnh sửa query tương ứng
+                query = "SELECT HOTEN FROM nhanvien";
                 DataTable dtChucVu = mySQLConnector.Select(query);
                 foreach (DataRow row in dtChucVu.Rows)
                 {
                     cbo_NguoiDung.Items.Add(row["HOTEN"].ToString());
                 }
-
-                
-
-
 
             }
             catch (Exception ex)
@@ -75,23 +64,34 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 string query = "SELECT * FROM lichsusudung";
                 DataTable dataTable = mySQLConnector.Select(query);
 
-                // Thêm một cột mới để lưu thông tin trạng thái cho mỗi hàng
-                dataTable.Columns.Add("TrangThai", typeof(string));
-
-                // Kiểm tra và thiết lập trạng thái cho từng hàng trong DataTable
+                // Cập nhật trạng thái cho từng hàng và cập nhật vào cơ sở dữ liệu
                 foreach (DataRow row in dataTable.Rows)
                 {
                     DateTime ngayKetThuc = Convert.ToDateTime(row["NgayKetThuc"]);
-                    if (ngayKetThuc < DateTime.Today)
+                    string trangThaiMoi;
+
+                    if (row["TrangThai"].ToString() == "Đã trả")
                     {
-                        // Thiết lập trạng thái "Đã hết hạn" cho các hàng có NgayKetThuc trước ngày hiện tại
-                        row["TrangThai"] = "Đã hết hạn";
+                        trangThaiMoi = "Đã trả";
                     }
-                    else if (ngayKetThuc < DateTime.Today.AddDays(1))
+                    else if (ngayKetThuc < DateTime.Today)
                     {
-                        // Thiết lập trạng thái "Sắp hết hạn" cho các hàng có NgayKetThuc là ngày hôm sau
-                        row["TrangThai"] = "Sắp hết hạn";
+                        trangThaiMoi = "Đã hết hạn";
                     }
+                    else if (ngayKetThuc == DateTime.Today)
+                    {
+                        trangThaiMoi = "Sắp hết hạn";
+                    }
+                    else
+                    {
+                        trangThaiMoi = "Đang mượn";
+                    }
+
+                    row["TrangThai"] = trangThaiMoi;
+
+                    // Cập nhật trạng thái vào cơ sở dữ liệu
+                    string updateQuery = $"UPDATE lichsusudung SET TrangThai = '{trangThaiMoi}' WHERE MaLichSuSuDung = {row["MaLichSuSuDung"]}";
+                    mySQLConnector.ExecuteQuery(updateQuery);
                 }
 
                 // Gán DataSource cho GridControl
@@ -99,6 +99,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 
                 // Áp dụng định dạng điều kiện cho GridControl dựa trên cột TrangThai
                 gridView1.FormatConditions.Clear();
+
                 StyleFormatCondition conditionExpired = new StyleFormatCondition(FormatConditionEnum.Equal, gridView1.Columns["TrangThai"], null, "Đã hết hạn");
                 conditionExpired.Appearance.BackColor = Color.Red;
                 gridView1.FormatConditions.Add(conditionExpired);
@@ -106,17 +107,16 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 StyleFormatCondition conditionExpiring = new StyleFormatCondition(FormatConditionEnum.Equal, gridView1.Columns["TrangThai"], null, "Sắp hết hạn");
                 conditionExpiring.Appearance.BackColor = Color.Yellow;
                 gridView1.FormatConditions.Add(conditionExpiring);
+
+                StyleFormatCondition conditionBorrowed = new StyleFormatCondition(FormatConditionEnum.Equal, gridView1.Columns["TrangThai"], null, "Đang mượn");
+                conditionBorrowed.Appearance.BackColor = Color.LightGreen;
+                gridView1.FormatConditions.Add(conditionBorrowed);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi load dữ liệu: " + ex.Message);
             }
         }
-
-
-
-
-
 
         private void _showHide(bool kt)
         {
@@ -129,8 +129,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             btnSua.Enabled = kt;
             btnXoa.Enabled = kt;
             btnThoat.Enabled = kt;
-            btnIn.Enabled = kt;
-
+            btn_TraThietBi.Enabled = kt;
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -168,7 +167,6 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             _showHide(false);
         }
 
-
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             int rowIndex = gridView1.FocusedRowHandle;
@@ -188,8 +186,6 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             }
         }
 
-
-
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
@@ -201,11 +197,25 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 DateTime ngayBatDau = dtp_NgayBatDau.Value;
                 DateTime ngayKetThuc = dtp_NgayKetThuc.Value;
 
+                string trangThai;
+                if (ngayKetThuc < DateTime.Today)
+                {
+                    trangThai = "Đã hết hạn";
+                }
+                else if (ngayKetThuc == DateTime.Today)
+                {
+                    trangThai = "Sắp hết hạn";
+                }
+                else
+                {
+                    trangThai = "Đang mượn";
+                }
+
                 if (checkbutton)
                 {
                     // Thêm mới
-                    string query = $"INSERT INTO lichsusudung (MaThietBi, MANV, MucDichSuDung, NgayBatDau, NgayKetThuc) " +
-                                   $"VALUES ({maThietBi}, {MANV}, '{mucDichSuDung}', '{ngayBatDau.ToString("yyyy-MM-dd")}', '{ngayKetThuc.ToString("yyyy-MM-dd")}')";
+                    string query = $"INSERT INTO lichsusudung (MaThietBi, MANV, MucDichSuDung, NgayBatDau, NgayKetThuc, TrangThai) " +
+                                   $"VALUES ({maThietBi}, {MANV}, '{mucDichSuDung}', '{ngayBatDau.ToString("yyyy-MM-dd")}', '{ngayKetThuc.ToString("yyyy-MM-dd")}', '{trangThai}')";
 
                     mySQLConnector.ExecuteQuery(query);
                 }
@@ -214,8 +224,8 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                     // Sửa
                     DataRow row = gridView1.GetDataRow(rowIndex);
                     int maLichSuSuDung = Convert.ToInt32(row["MaLichSuSuDung"]);
-                    string query = $"UPDATE lichsusudung SET MaThietBi = {maThietBi}, MANV = {MANV}, " +
-                                   $"MucDichSuDung = '{mucDichSuDung}', NgayBatDau = '{ngayBatDau.ToString("yyyy-MM-dd")}', NgayKetThuc = '{ngayKetThuc.ToString("yyyy-MM-dd")}' " +
+                    string query = $"UPDATE lichsusudung SET MaThietBi = {maThietBi}, MANV = {MANV}, MucDichSuDung = '{mucDichSuDung}', " +
+                                   $"NgayBatDau = '{ngayBatDau.ToString("yyyy-MM-dd")}', NgayKetThuc = '{ngayKetThuc.ToString("yyyy-MM-dd")}', TrangThai = '{trangThai}' " +
                                    $"WHERE MaLichSuSuDung = {maLichSuSuDung}";
 
                     mySQLConnector.ExecuteQuery(query);
@@ -230,12 +240,26 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             }
         }
 
-
-
-
         private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _showHide(true);
+        }
+
+        private void btn_TraThietBi_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int rowIndex = gridView1.FocusedRowHandle;
+            if (rowIndex < 0)
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để trả thiết bị.");
+                return;
+            }
+
+            DataRow row = gridView1.GetDataRow(rowIndex);
+            int maLichSuSuDung = Convert.ToInt32(row["MaLichSuSuDung"]);
+
+            string query = $"UPDATE lichsusudung SET TrangThai = 'Đã trả' WHERE MaLichSuSuDung = {maLichSuSuDung}";
+            mySQLConnector.ExecuteQuery(query);
+            LoadData(); // Load lại dữ liệu sau khi trả thiết bị
         }
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -243,80 +267,50 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             this.Close();
         }
 
+        private int GetIDByTen(string ten, string tableName, string tenColumn, string idColumn)
+        {
+            string query = $"SELECT {idColumn} FROM {tableName} WHERE {tenColumn} = '{ten}'";
+            DataTable dt = mySQLConnector.Select(query);
+            if (dt.Rows.Count > 0)
+            {
+                return Convert.ToInt32(dt.Rows[0][idColumn]);
+            }
+            return -1;
+        }
+
+        private string GetTenById(string id, string tableName, string tenColumn, string idColumn)
+        {
+            string query = $"SELECT {tenColumn} FROM {tableName} WHERE {idColumn} = '{id}'";
+            DataTable dt = mySQLConnector.Select(query);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0][tenColumn].ToString();
+            }
+            return null;
+        }
+
+        private void SelectComboBoxItem(System.Windows.Forms.ComboBox comboBox, string item)
+        {
+            if (item == null)
+                return;
+
+            for (int i = 0; i < comboBox.Items.Count; i++)
+            {
+                if (comboBox.Items[i].ToString() == item)
+                {
+                    comboBox.SelectedIndex = i;
+                    return;
+                }
+            }
+        }
+
         private void ClearInputs()
         {
-            // Xóa các giá trị trong các control nhập liệu
             cbo_ThietBi.SelectedIndex = -1;
             cbo_NguoiDung.SelectedIndex = -1;
-            txt_MucDich.Text = "";
-            dtp_NgayBatDau.Value = DateTime.Now;
-            dtp_NgayKetThuc.Value = DateTime.Now;
+            txt_MucDich.Clear();
+            dtp_NgayBatDau.Value = DateTime.Today;
+            dtp_NgayKetThuc.Value = DateTime.Today;
         }
-
-        
-
-
-
-
-
-
-        private int GetIDByTen(string ten, string tableName, string columnName, string idName)
-        {
-            int id = -1; // Giá trị mặc định nếu không tìm thấy ID
-
-            try
-            {
-                string query = $"SELECT {idName} FROM {tableName} WHERE {columnName} = '{ten}'";
-                object result = mySQLConnector.ExecuteScalar(query);
-                if (result != null && result != DBNull.Value)
-                {
-                    id = Convert.ToInt32(result);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi lấy ID từ bảng {tableName}: {ex.Message}");
-            }
-
-            return id;
-        }
-
-        private string GetTenById(string id, string tableName, string columnName, string idColumnName)
-        {
-            string ten = ""; // Giá trị mặc định nếu không tìm thấy tên
-
-            try
-            {
-                string query = $"SELECT {columnName} FROM {tableName} WHERE {idColumnName} = {id}";
-                object result = mySQLConnector.ExecuteScalar(query);
-                if (result != null && result != DBNull.Value)
-                {
-                    ten = Convert.ToString(result);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi lấy tên từ bảng {tableName}: {ex.Message}");
-            }
-
-            return ten;
-        }
-        // Hàm chọn item trong ComboBox theo ID
-
-        private void SelectComboBoxItem(System.Windows.Forms.ComboBox comboBox, string id)
-        {
-            foreach (var item in comboBox.Items)
-            {
-                // Kiểm tra ID của mỗi item trong ComboBox
-                // Nếu tìm thấy ID tương ứng, chọn item đó
-                if (comboBox.GetItemText(item) == id)
-                {
-                    comboBox.SelectedItem = item;
-                    break;
-                }
-            }
-        }
-
-       
     }
 }

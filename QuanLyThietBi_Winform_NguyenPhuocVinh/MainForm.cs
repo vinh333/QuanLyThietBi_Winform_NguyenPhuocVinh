@@ -22,7 +22,9 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         private void FormMain_Load(object sender, EventArgs e)
         {
             ribbonControl1.SelectedPage = ribbonPage2;
+            openform(typeof(FormBieuDo)); // Mở FormBieuDo khi ứng dụng bắt đầu
         }
+
         void openform(Type typeForm)
         {
             foreach (var frm in MdiChildren)
@@ -42,25 +44,21 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         private void btnThietBi_ItemClick(object sender, ItemClickEventArgs e)
         {
             openform(typeof(FormDanhSachThietBi));
-
         }
 
         private void btnChucNang_ItemClick(object sender, ItemClickEventArgs e)
         {
             openform(typeof(FormChucNangThietBi));
-
         }
 
         private void btnLoaiThietBi_ItemClick(object sender, ItemClickEventArgs e)
         {
             openform(typeof(FormLoaiThietBi));
-
         }
 
         private void btnVitri_ItemClick(object sender, ItemClickEventArgs e)
         {
             openform(typeof(FormViTriThietBi));
-
         }
 
         private void btnLichSuSuDung_ItemClick(object sender, ItemClickEventArgs e)
@@ -76,18 +74,21 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         private void btnSuaChua_ItemClick(object sender, ItemClickEventArgs e)
         {
             openform(typeof(FormSuaChua));
-
         }
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
             openform(typeof(FormKhoVatTu));
-
         }
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
             openform(typeof(FormDonHang));
+        }
+
+        private void btn_ThongKe_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(FormBieuDo));
         }
     }
 }

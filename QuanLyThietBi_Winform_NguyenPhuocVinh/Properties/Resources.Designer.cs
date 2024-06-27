@@ -63,6 +63,66 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Borcelle {
+            get {
+                object obj = ResourceManager.GetObject("Borcelle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Borcelle__1_ {
+            get {
+                object obj = ResourceManager.GetObject("Borcelle (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Borcelle99 {
+            get {
+                object obj = ResourceManager.GetObject("Borcelle99", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buon_lau_phao {
+            get {
+                object obj = ResourceManager.GetObject("buon-lau-phao", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_eye_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-eye-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_eye_40 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-eye-40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_key_40 {
             get {
                 object obj = ResourceManager.GetObject("icons8-key-40", resourceCulture);
@@ -106,6 +166,17 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.Properties {
         internal static System.Drawing.Bitmap Screenshot_2024_05_06_062744 {
             get {
                 object obj = ResourceManager.GetObject("Screenshot 2024-05-06 062744", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap top_may_in_van_don_giao_hang_tiet_kiem_shopee_lazada_viettel_post_hot_nhat_hien_nay_3_1 {
+            get {
+                object obj = ResourceManager.GetObject("top-may-in-van-don-giao-hang-tiet-kiem-shopee-lazada-viettel-post-hot-nhat-hien-n" +
+                        "ay-3-1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

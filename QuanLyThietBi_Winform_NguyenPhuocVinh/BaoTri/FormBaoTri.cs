@@ -16,6 +16,8 @@ using iTextSharp.text.pdf.parser;
 using Microsoft.Office.Interop.Word;
 using DevExpress.Utils.DirectXPaint;
 using Mysqlx.Crud;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 {
     public partial class FormBaoTri : DevExpress.XtraEditors.XtraForm
@@ -24,6 +26,8 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         {
             InitializeComponent();
             mySQLConnector = new MySQLConnector();
+            gridView1.CustomDrawCell += GridView1_CustomDrawCell;
+
         }
 
         private MySQLConnector mySQLConnector;
@@ -57,41 +61,9 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 
                 System.Data.DataTable dataTable = mySQLConnector.Select(query);
 
-                // Thêm một cột mới để lưu thông tin trạng thái cho mỗi hàng
-                dataTable.Columns.Add("TrangThai", typeof(string));
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    DateTime ngayKetThuc = Convert.ToDateTime(row["NgayKetThucBaoTri"]);
-                    if (ngayKetThuc < DateTime.Today)
-                    {
-                        // Thiết lập trạng thái "Đã hết hạn" cho các hàng có NgayKetThuc trước ngày hiện tại
-                        row["TrangThai"] = "Cần bảo trì";
-                    }
-                    else if (ngayKetThuc < DateTime.Today.AddDays(1))
-                    {
-                        // Thiết lập trạng thái "Sắp hết hạn" cho các hàng có NgayKetThuc là ngày hôm sau
-                        row["TrangThai"] = "Sắp đến hạn bảo trì";
-                    }
-                    else
-                    {
-                        row["TrangThai"] = "Chưa đến hạn bảo trì";
 
-                    }
-                }
 
-                // Gán DataSource cho GridControl
                 gridControl1.DataSource = dataTable;
-
-                // Áp dụng định dạng điều kiện cho GridControl dựa trên cột TrangThai
-                gridView1.FormatConditions.Clear();
-                StyleFormatCondition conditionExpired = new StyleFormatCondition(FormatConditionEnum.Equal, gridView1.Columns["TrangThai"], null, "Cần bảo trì");
-                conditionExpired.Appearance.BackColor = Color.Red;
-                gridView1.FormatConditions.Add(conditionExpired);
-
-                StyleFormatCondition conditionExpiring = new StyleFormatCondition(FormatConditionEnum.Equal, gridView1.Columns["TrangThai"], null, "Sắp đến hạn bảo trì");
-                conditionExpiring.Appearance.BackColor = Color.Yellow;
-                gridView1.FormatConditions.Add(conditionExpiring);
-
 
                 LoadComboBoxData();
                 ClearInputs();
@@ -542,6 +514,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             txt_TenBaoCao.Text = "Chưa có tệp tin";
             picHinhAnh.Image = Properties.Resources.nonimg;
         }
+
         private void _showHide(bool kt)
         {
             splitContainer1.Panel1Collapsed = kt;
@@ -555,6 +528,55 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             btnThoat.Enabled = kt;
             btnIn.Enabled = kt;
 
+        }
+        private void GridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view != null)
+            {
+                if (e.Column.FieldName == "TinhTrang")
+                {
+                    string status = e.CellValue?.ToString();
+                    switch (status)
+                    {
+                        case "Đang sửa chửa":
+                            e.Appearance.BackColor = Color.Orange;
+                            break;
+                        case "Đang bảo trì":
+                            e.Appearance.BackColor = Color.Yellow;
+                            break;
+                        case "Đang hoạt động":
+                            e.Appearance.BackColor = Color.Green;
+                            break;
+                        default:
+                            e.Appearance.BackColor = Color.White;
+                            break;
+                    }
+                }
+                else if (e.Column.FieldName == "CanhBao")
+                {
+                    string status = e.CellValue?.ToString();
+                    // Perform your logic for coloring based on the content of the "CanhBao" column
+                    // For example:
+                    if (status.Contains("Hôm nay"))
+                    {
+                        e.Appearance.BackColor = Color.Orange;
+                    }
+                    else if (status.Contains("Còn"))
+                    {
+                        e.Appearance.BackColor = Color.Yellow;
+                    }
+                    else if (status.Contains("Quá hạn"))
+                    {
+                        e.Appearance.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        // Set default color
+                        e.Appearance.BackColor = Color.White;
+                    }
+                }
+            }
         }
 
         private void CapNhatSoNgayConLaiDenHanBaoTri()

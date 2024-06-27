@@ -141,12 +141,6 @@
     <Compile Include="BaoTri\FormLichSuBaoTri.Designer.cs">
       <DependentUpon>FormLichSuBaoTri.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaoTri\XtraForm1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BaoTri\XtraForm1.Designer.cs">
-      <DependentUpon>XtraForm1.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormBieuDo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,9 +240,6 @@
     <EmbeddedResource Include="BaoTri\FormLichSuBaoTri.resx">
       <DependentUpon>FormLichSuBaoTri.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoTri\XtraForm1.resx">
-      <DependentUpon>XtraForm1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormBieuDo.resx">
       <DependentUpon>FormBieuDo.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +324,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-user-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\top-may-in-van-don-giao-hang-tiet-kiem-shopee-lazada-viettel-post-hot-nhat-hien-nay-3-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buon-lau-phao.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Borcelle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Borcelle %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Borcelle99.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-eye-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-eye-30.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

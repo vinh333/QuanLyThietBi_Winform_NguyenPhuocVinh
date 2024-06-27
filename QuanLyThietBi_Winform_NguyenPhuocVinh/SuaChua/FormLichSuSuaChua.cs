@@ -16,6 +16,8 @@ using iTextSharp.text.pdf.parser;
 using Microsoft.Office.Interop.Word;
 using DevExpress.Utils.DirectXPaint;
 using Mysqlx.Crud;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 {
     public partial class FormLichSuSuaChua : DevExpress.XtraEditors.XtraForm
@@ -49,6 +51,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         {
             _showHide(true);
             gridView1.OptionsBehavior.Editable = false; // Chặn chỉnh sửa trực tiếp
+            gridView1.CustomDrawCell += GridView1_CustomDrawCell;
 
             LoadData();
 
@@ -149,7 +152,6 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             int maThietBi = Convert.ToInt32(row["MaThietBi"]);
             DateTime ngaySuaChua = Convert.ToDateTime(row["NgaySuaChua"]);
             string moTa = row["MoTa"].ToString();
-            string trangThai = row["TrangThai"].ToString();
             string tienDo = row["TienDo"].ToString();
 
             byte[] hinhAnhSuaChua = (byte[])row["HinhAnhSuaChua"]; // Đọc hình ảnh từ cột HinhAnhSuaChua
@@ -423,7 +425,30 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             txt_TenBienBanSuaChua.Text = "Chưa có tệp tin";
             picHinhAnhSuaChua.Image = Properties.Resources.nonimg;
         }
+        private void GridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.Column.FieldName == "TienDo")
+            {
+                string status = e.CellValue?.ToString();
+                // Perform your logic for coloring based on the content of the "CanhBao" column
+                // For example:
+                if (status.Contains("Đang"))
+                {
+                    e.Appearance.BackColor = Color.Yellow;
+                }
+                else if (status.Contains("Hoàn tất"))
+                {
+                    e.Appearance.BackColor = Color.Green;
+                }
 
+                else
+                {
+                    // Set default color
+                    e.Appearance.BackColor = Color.White;
+                }
+            }
+        }
 
 
         private void picHinhAnh_Click(object sender, EventArgs e)

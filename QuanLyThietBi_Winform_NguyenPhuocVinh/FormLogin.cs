@@ -15,6 +15,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
     public partial class FormLogin : DevExpress.XtraEditors.XtraForm
     {
         private MySQLConnector mySQLConnector;
+        private bool isPasswordVisible = false;
 
         public FormLogin()
         {
@@ -64,7 +65,16 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 XtraMessageBox.Show("Tên người dùng hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void btnTogglePassword_Click(object sender, EventArgs e)
+        {
+            // Chuyển đổi trạng thái hiển thị mật khẩu
+            isPasswordVisible = !isPasswordVisible;
 
+            // Cập nhật thuộc tính PasswordChar dựa trên trạng thái hiển thị mật khẩu
+            txt_PassWord.Properties.PasswordChar = isPasswordVisible ? '\0' : '*';
+
+            // Cập nhật văn bản của nút dựa trên trạng thái hiển thị mật khẩu
+        }
 
 
         private void btnThoat_Click(object sender, EventArgs e)

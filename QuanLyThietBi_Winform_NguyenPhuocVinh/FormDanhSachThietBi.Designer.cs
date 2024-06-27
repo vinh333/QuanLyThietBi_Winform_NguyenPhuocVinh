@@ -75,8 +75,8 @@
             this.cbo_TinhTrang = new System.Windows.Forms.ComboBox();
             this.txt_SerialThietBi = new System.Windows.Forms.TextBox();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -567,13 +567,6 @@
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "In";
-            this.barButtonItem2.Id = 6;
-            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
             // gridView1
             // 
             this.gridView1.Appearance.FilterPanel.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -587,6 +580,13 @@
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "In";
+            this.barButtonItem2.Id = 6;
+            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
             // FormDanhSachThietBi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -598,7 +598,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormDanhSachThietBi";
-            this.Text = "FormDanhSachThietBi";
+            this.Text = "Danh sách thiết bị";
             this.Load += new System.EventHandler(this.FormDanhSachThietBi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();

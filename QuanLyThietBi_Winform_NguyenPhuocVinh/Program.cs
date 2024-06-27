@@ -16,7 +16,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormBieuDo());
+            Application.Run(new FormLogin());
         }
     }
 }

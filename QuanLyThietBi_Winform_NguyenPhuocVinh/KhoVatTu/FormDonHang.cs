@@ -3,6 +3,8 @@ using System.IO;
 using System.Windows.Forms;
 using System;
 using System.Drawing;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
 {
@@ -51,6 +53,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
 
         private void LoadData()
         {
+
             try
             {
                 string query = @"SELECT 
@@ -70,6 +73,9 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
                                 donhang.MaVatTu = khovattu.MaVatTu;";
                 DataTable dataTable = mySQLConnector.Select(query);
                 gridControl1.DataSource = dataTable;
+
+                            ClearInputs();
+
             }
             catch (Exception ex)
             {
@@ -336,5 +342,59 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
             label_TrangThaiNhapKho.Visible = show;
             label_NgayGiao.Visible = show;
         }
+        private void GridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view != null)
+            {
+                string columnName = e.Column.FieldName;
+                string status = e.CellValue?.ToString();
+
+                if (columnName == "TrangThaiDonHang")
+                {
+                    switch (status)
+                    {
+                        case "Đang chờ xác nhận":
+                            e.Appearance.BackColor = Color.Orange;
+                            break;
+                        case "Đã xác nhận":
+                            e.Appearance.BackColor = Color.LightGreen;
+                            break;
+                        case "Đang xử lý":
+                            e.Appearance.BackColor = Color.Yellow;
+                            break;
+                        case "Đang vận chuyển":
+                            e.Appearance.BackColor = Color.SkyBlue;
+                            break;
+                        case "Đã giao hàng":
+                            e.Appearance.BackColor = Color.Green;
+                            break;
+                        case "Đã hủy":
+                            e.Appearance.BackColor = Color.Red;
+                            break;
+                        default:
+                            e.Appearance.BackColor = Color.White;
+                            break;
+                    }
+                }
+                else if (columnName == "TrangThaiNhapKho")
+                {
+                    switch (status)
+                    {
+                        case "Chờ nhập kho":
+                            e.Appearance.BackColor = Color.Orange;
+                            break;
+                        case "Đã nhập kho":
+                            e.Appearance.BackColor = Color.Green;
+                            break;
+                        default:
+                            e.Appearance.BackColor = Color.White;
+                            break;
+                    }
+                }
+            }
+        }
+
+
     }
 }

@@ -2,6 +2,7 @@
 using DevExpress.XtraEditors;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace QuanLyThietBi_Winform_NguyenPhuocVinh
@@ -25,6 +26,11 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         {
             try
             {
+                cbo_HinhThuc.SelectedIndex = 0;
+                cbo_Loai.SelectedIndex = 0;
+                cbo_Nam.SelectedIndex = 0;
+                cbo_Thang.SelectedIndex = 0;
+
                 // Ensure the charts are empty before adding new data
                 chart_ThongKeSoLuongThietBi.Series.Clear();
                 chart_ThongKeThietBiTheoPhanLoai.Series.Clear();
@@ -32,6 +38,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 chart_ThongKeBaoTri.Series.Clear();
                 chart_ThongKeNhapXuatVatTu.Series.Clear();
                 chart_ThongKeTinhTrang.Series.Clear(); // Clear the new chart
+                chart_BaoTriThietBi.Series.Clear(); // Clear the new chart
 
                 // Create the various charts
                 CreateBarChart_ThongKeSoLuongThietBi();
@@ -40,6 +47,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 CreateBarChart_ThongKeBaoTri();
                 CreateBarChart_ThongKeNhapXuatVatTu();
                 CreateBarChart_ThongKeTinhTrangThietBi(); // Create the new chart
+                CreateBarChart_BaoTriThietBi(); // Create the new chart
             }
             catch (Exception ex)
             {
@@ -118,8 +126,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             COUNT(MaThietBi) AS SoLuong
         FROM 
             lichsusuachua
-        WHERE 
-            DATE_FORMAT(NgaySuaChua, '%Y-%m') = DATE_FORMAT(CURRENT_DATE, '%Y-%m')
+       
         GROUP BY 
             TienDo
         ORDER BY 
@@ -170,8 +177,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             COUNT(MaThietBi) AS SoLuong
         FROM 
             lichsubaotri
-        WHERE 
-            DATE_FORMAT(NgayBaoTri, '%Y-%m') = DATE_FORMAT(CURRENT_DATE, '%Y-%m')
+        
         GROUP BY 
             TienDo
         ORDER BY 
@@ -248,32 +254,125 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         private void CreateBarChart_ThongKeTinhTrangThietBi()
         {
             string query = @"
-        SELECT 
-            TinhTrang, 
-            COUNT(MaThietBi) AS SoLuong
-        FROM 
-            thietbi
-        GROUP BY 
-            TinhTrang;";
+            SELECT 
+                TinhTrang, 
+                COUNT(MaThietBi) AS SoLuong
+            FROM 
+                thietbi
+            GROUP BY 
+                TinhTrang;";
 
             DataTable dataTable = mySQLConnector.Select(query);
 
-            Series series = new Series("Tình Trạng Thiết Bị", ViewType.Bar);
+            Series series = new Series();
+
+            // Mảng màu cho các tình trạng thiết bị
+            Color[] colors = new Color[] { Color.Green, Color.IndianRed, Color.Yellow, Color.Orange };
 
             foreach (DataRow row in dataTable.Rows)
             {
-                series.Points.Add(new SeriesPoint(row["TinhTrang"], row["SoLuong"]));
+                // Lấy tên tình trạng và số lượng từ dữ liệu
+                string tinhTrang = row["TinhTrang"].ToString();
+                int soLuong = Convert.ToInt32(row["SoLuong"]);
+
+                // Tạo một điểm trong loạt dữ liệu của biểu đồ
+                SeriesPoint point = new SeriesPoint(tinhTrang, soLuong);
+
+                // Gán màu từ mảng màu cho cột tương ứng
+                int colorIndex = Array.IndexOf(new string[] { "Đang hoạt động", "Hư hỏng", "Đang bảo trì", "Đang sửa chửa" }, tinhTrang);
+                if (colorIndex >= 0)
+                {
+                    point.Color = colors[colorIndex];
+                }
+
+                // Thêm điểm vào loạt dữ liệu
+                series.Points.Add(point);
             }
 
+            // Thêm loạt dữ liệu vào biểu đồ
             chart_ThongKeTinhTrang.Series.Add(series);
 
-            // Setup the chart titles and legends
-            AddChartTitle(chart_ThongKeTinhTrang, "Thống Kê Tình Trạng Thiết Bị");
+            // Xoay biểu đồ để các cột nằm ngang
+            if (chart_ThongKeTinhTrang.Diagram is XYDiagram diagram)
+            {
+                diagram.Rotated = true;
+            }
+
+            // Thiết lập tiêu đề và chú thích của biểu đồ
+           // AddChartTitle(chart_ThongKeTinhTrang, "Thống Kê Tình Trạng Thiết Bị");
             chart_ThongKeTinhTrang.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
 
-            // Refresh the chart
+            // Làm mới biểu đồ
             chart_ThongKeTinhTrang.Refresh();
         }
+
+        private void CreateBarChart_BaoTriThietBi()
+        {
+            // Truy vấn dữ liệu từ cơ sở dữ liệu
+            string query = @"
+    SELECT 
+        TenThietBi,
+        NgayKetThucBaoTri
+    FROM 
+        thietbi;";
+
+            DataTable dataTable = mySQLConnector.Select(query);
+
+            int denHan = 0, sapDenHan = 0, treHan = 0;
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                DateTime ngayKetThucBaoTri = Convert.ToDateTime(row["NgayKetThucBaoTri"]);
+                TimeSpan diff = ngayKetThucBaoTri - DateTime.Now;
+
+                if (diff.Days < 0)
+                {
+                    treHan++;
+                }
+                else if (diff.Days <= 30)
+                {
+                    denHan++;
+                }
+                else
+                {
+                    sapDenHan++;
+                }
+            }
+
+            Series series = new Series();
+
+            // Thêm điểm dữ liệu và thiết lập màu sắc tương ứng
+            SeriesPoint pointDenHan = new SeriesPoint("Đến Hạn", denHan);
+            pointDenHan.Color = Color.Orange;
+            series.Points.Add(pointDenHan);
+
+            SeriesPoint pointSapDenHan = new SeriesPoint("Sắp Đến Hạn", sapDenHan);
+            pointSapDenHan.Color = Color.Yellow;
+            series.Points.Add(pointSapDenHan);
+
+            SeriesPoint pointTreHan = new SeriesPoint("Trễ Hạn", treHan);
+            pointTreHan.Color = Color.IndianRed;
+            series.Points.Add(pointTreHan);
+
+            chart_BaoTriThietBi.Series.Add(series);
+
+            // Xoay biểu đồ để các cột nằm ngang
+            if (chart_BaoTriThietBi.Diagram is XYDiagram diagram)
+            {
+                diagram.Rotated = true;
+            }
+
+            // Thiết lập tiêu đề và chú thích của biểu đồ
+            //AddChartTitle(chart_BaoTriThietBi, "Thống Kê Bảo Trì Thiết Bị");
+            chart_BaoTriThietBi.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
+
+            // Làm mới biểu đồ
+            chart_BaoTriThietBi.Refresh();
+        }
+
+        // Hàm thêm tiêu đề vào biểu đồ
+      
+
 
 
         private void AddChartTitle(ChartControl chart, string titleText)
@@ -282,5 +381,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             chartTitle.Text = titleText;
             chart.Titles.Add(chartTitle);
         }
+
+       
     }
 }

@@ -602,6 +602,7 @@
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.GridView1_CustomDrawCell);
             // 
             // barButtonItem4
             // 
@@ -822,6 +823,7 @@
             this.Controls.Add(this.barDockControl4);
             this.Controls.Add(this.barDockControl3);
             this.Name = "FormLichSuBaoTri";
+            this.Text = "Lịch sử bảo trì";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormBaoTri_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();

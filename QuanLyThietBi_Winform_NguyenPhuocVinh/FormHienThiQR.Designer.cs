@@ -105,7 +105,7 @@
             this.Controls.Add(this.lblModel);
             this.Controls.Add(this.pictureBoxQR);
             this.Name = "FormHienThiQR";
-            this.Text = "FormHienThiQR";
+            this.Text = "Mã QR";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQR)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

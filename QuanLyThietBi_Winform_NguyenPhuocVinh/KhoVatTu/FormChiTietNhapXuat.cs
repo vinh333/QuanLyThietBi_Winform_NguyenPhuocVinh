@@ -30,11 +30,14 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
             try
             {
                 string query = @"SELECT chitietnhapxuat.MaChiTiet, 
-                                 chitietnhapxuat.MaVatTu, 
-                                 chitietnhapxuat.SoLuong, 
-                                 chitietnhapxuat.NgayNhapXuat, 
-                                 chitietnhapxuat.LoaiGiaoDich
-                         FROM chitietnhapxuat";
+                   chitietnhapxuat.MaVatTu, 
+                   khovattu.TenVatTu, 
+                   chitietnhapxuat.SoLuong, 
+                   chitietnhapxuat.NgayNhapXuat, 
+                   chitietnhapxuat.LoaiGiaoDich
+            FROM chitietnhapxuat
+            INNER JOIN khovattu ON chitietnhapxuat.MaVatTu = khovattu.MaVatTu;
+            ";
                 DataTable dataTable = mySQLConnector.Select(query);
                 gridControl1.DataSource = dataTable;
             }
@@ -76,6 +79,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh.KhoVatTu
             DataRow row = gridView1.GetDataRow(rowIndex);
             txt_MaChiTiet.Text = row["MaChiTiet"].ToString();
             txt_MaVatTu.Text = row["MaVatTu"].ToString();
+            txt_TenVatTu.Text = row["TenVatTu"].ToString();
             txt_SoLuong.Text = row["SoLuong"].ToString();
             dateEdit_NgayNhapXuat.DateTime = Convert.ToDateTime(row["NgayNhapXuat"]);
             SelectComboBoxItem(cbo_LoaiGiaoDich, row["LoaiGiaoDich"].ToString());

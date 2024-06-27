@@ -54,6 +54,7 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btn_TaoQr = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.label_ViTri = new System.Windows.Forms.Label();
             this.picHinhAnh = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -67,7 +68,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txt_NguongToiThieu = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -234,7 +234,7 @@
             // 
             this.btn_XemChiTietNhapXuat.Caption = "Xem chi tiết nhập xuất";
             this.btn_XemChiTietNhapXuat.Id = 6;
-            this.btn_XemChiTietNhapXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIn.ImageOptions.SvgImage")));
+            this.btn_XemChiTietNhapXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_XemChiTietNhapXuat.ImageOptions.SvgImage")));
             this.btn_XemChiTietNhapXuat.Name = "btn_XemChiTietNhapXuat";
             this.btn_XemChiTietNhapXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXemChiTietNhapXuat_ItemClick);
             // 
@@ -317,6 +317,12 @@
             this.barButtonItem3.Caption = "barButtonItem3";
             this.barButtonItem3.Id = 13;
             this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "barButtonItem4";
+            this.barButtonItem4.Id = 16;
+            this.barButtonItem4.Name = "barButtonItem4";
             // 
             // label_ViTri
             // 
@@ -462,12 +468,6 @@
             this.splitContainer1.SplitterDistance = 405;
             this.splitContainer1.TabIndex = 8;
             // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "barButtonItem4";
-            this.barButtonItem4.Id = 16;
-            this.barButtonItem4.Name = "barButtonItem4";
-            // 
             // FormKhoVatTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -479,7 +479,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormKhoVatTu";
-            this.Text = "KhoVatTu";
+            this.Text = "Kho vật tư";
             this.Load += new System.EventHandler(this.FormDanhSachVatTu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

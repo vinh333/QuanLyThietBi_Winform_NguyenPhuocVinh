@@ -32,17 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChiTietNhapXuat));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txt_MaChiTiet = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label_ViTri = new System.Windows.Forms.Label();
-            this.cbo_LoaiGiaoDich = new System.Windows.Forms.ComboBox();
-            this.txt_TenVatTu = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_SoLuong = new System.Windows.Forms.TextBox();
-            this.label_Nguong = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.txt_TenVatTu = new System.Windows.Forms.Label();
+            this.dateEdit_NgayNhapXuat = new DevExpress.XtraEditors.DateEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -62,21 +53,30 @@
             this.btn_TaoQr = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.txt_MaVatTu = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateEdit_NgayNhapXuat = new DevExpress.XtraEditors.DateEdit();
+            this.txt_MaChiTiet = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label_ViTri = new System.Windows.Forms.Label();
+            this.cbo_LoaiGiaoDich = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_SoLuong = new System.Windows.Forms.TextBox();
+            this.label_Nguong = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayNhapXuat.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayNhapXuat.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -99,6 +99,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txt_TenVatTu);
             this.groupBox1.Controls.Add(this.dateEdit_NgayNhapXuat);
             this.groupBox1.Controls.Add(this.txt_MaVatTu);
             this.groupBox1.Controls.Add(this.label4);
@@ -106,7 +107,6 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label_ViTri);
             this.groupBox1.Controls.Add(this.cbo_LoaiGiaoDich);
-            this.groupBox1.Controls.Add(this.txt_TenVatTu);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txt_SoLuong);
             this.groupBox1.Controls.Add(this.label_Nguong);
@@ -118,120 +118,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hoá đơn";
             // 
-            // txt_MaChiTiet
-            // 
-            this.txt_MaChiTiet.AutoSize = true;
-            this.txt_MaChiTiet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_MaChiTiet.Location = new System.Drawing.Point(176, 47);
-            this.txt_MaChiTiet.Name = "txt_MaChiTiet";
-            this.txt_MaChiTiet.Size = new System.Drawing.Size(59, 20);
-            this.txt_MaChiTiet.TabIndex = 30;
-            this.txt_MaChiTiet.Text = "02463";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(25, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 20);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Mã hoá đơn";
-            // 
-            // label_ViTri
-            // 
-            this.label_ViTri.AutoSize = true;
-            this.label_ViTri.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label_ViTri.Location = new System.Drawing.Point(25, 259);
-            this.label_ViTri.Name = "label_ViTri";
-            this.label_ViTri.Size = new System.Drawing.Size(51, 20);
-            this.label_ViTri.TabIndex = 27;
-            this.label_ViTri.Text = "Loại ";
-            // 
-            // cbo_LoaiGiaoDich
-            // 
-            this.cbo_LoaiGiaoDich.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbo_LoaiGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.cbo_LoaiGiaoDich.FormattingEnabled = true;
-            this.cbo_LoaiGiaoDich.Items.AddRange(new object[] {
-            "Nhập",
-            "Xuất"});
-            this.cbo_LoaiGiaoDich.Location = new System.Drawing.Point(180, 258);
-            this.cbo_LoaiGiaoDich.Name = "cbo_LoaiGiaoDich";
-            this.cbo_LoaiGiaoDich.Size = new System.Drawing.Size(228, 28);
-            this.cbo_LoaiGiaoDich.TabIndex = 28;
-            // 
             // txt_TenVatTu
             // 
-            this.txt_TenVatTu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_TenVatTu.Location = new System.Drawing.Point(180, 117);
+            this.txt_TenVatTu.AutoSize = true;
+            this.txt_TenVatTu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txt_TenVatTu.Location = new System.Drawing.Point(176, 121);
             this.txt_TenVatTu.Name = "txt_TenVatTu";
-            this.txt_TenVatTu.Size = new System.Drawing.Size(228, 27);
-            this.txt_TenVatTu.TabIndex = 1;
+            this.txt_TenVatTu.Size = new System.Drawing.Size(59, 20);
+            this.txt_TenVatTu.TabIndex = 33;
+            this.txt_TenVatTu.Text = "02463";
             // 
-            // label1
+            // dateEdit_NgayNhapXuat
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(25, 121);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tên vật tư";
-            // 
-            // txt_SoLuong
-            // 
-            this.txt_SoLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_SoLuong.Location = new System.Drawing.Point(180, 164);
-            this.txt_SoLuong.Name = "txt_SoLuong";
-            this.txt_SoLuong.Size = new System.Drawing.Size(228, 27);
-            this.txt_SoLuong.TabIndex = 24;
-            // 
-            // label_Nguong
-            // 
-            this.label_Nguong.AutoSize = true;
-            this.label_Nguong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label_Nguong.Location = new System.Drawing.Point(25, 213);
-            this.label_Nguong.Name = "label_Nguong";
-            this.label_Nguong.Size = new System.Drawing.Size(138, 20);
-            this.label_Nguong.TabIndex = 6;
-            this.label_Nguong.Text = "Ngày nhập xuất";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label11.Location = new System.Drawing.Point(25, 167);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(88, 20);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "Số Lượng";
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Font = new System.Drawing.Font("Tahoma", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.MenuManager = this.barManager1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1301, 305);
-            this.gridControl1.TabIndex = 1;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Appearance.FilterPanel.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.gridView1.Appearance.FilterPanel.Options.UseFont = true;
-            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsFind.AlwaysVisible = true;
-            this.gridView1.OptionsFind.FindNullPrompt = "Nhập dữ liệu muốn tìm...";
-            this.gridView1.OptionsView.ColumnAutoWidth = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.dateEdit_NgayNhapXuat.EditValue = null;
+            this.dateEdit_NgayNhapXuat.Location = new System.Drawing.Point(180, 210);
+            this.dateEdit_NgayNhapXuat.MenuManager = this.barManager1;
+            this.dateEdit_NgayNhapXuat.Name = "dateEdit_NgayNhapXuat";
+            this.dateEdit_NgayNhapXuat.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.dateEdit_NgayNhapXuat.Properties.Appearance.Options.UseFont = true;
+            this.dateEdit_NgayNhapXuat.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit_NgayNhapXuat.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit_NgayNhapXuat.Size = new System.Drawing.Size(228, 28);
+            this.dateEdit_NgayNhapXuat.TabIndex = 32;
             // 
             // barManager1
             // 
@@ -412,13 +322,6 @@
             this.barButtonItem4.Id = 16;
             this.barButtonItem4.Name = "barButtonItem4";
             // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "In";
-            this.barButtonItem2.Id = 6;
-            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
             // txt_MaVatTu
             // 
             this.txt_MaVatTu.AutoSize = true;
@@ -439,20 +342,119 @@
             this.label4.TabIndex = 31;
             this.label4.Text = "Mã vật tư";
             // 
-            // dateEdit_NgayNhapXuat
+            // txt_MaChiTiet
             // 
-            this.dateEdit_NgayNhapXuat.EditValue = null;
-            this.dateEdit_NgayNhapXuat.Location = new System.Drawing.Point(180, 210);
-            this.dateEdit_NgayNhapXuat.MenuManager = this.barManager1;
-            this.dateEdit_NgayNhapXuat.Name = "dateEdit_NgayNhapXuat";
-            this.dateEdit_NgayNhapXuat.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.dateEdit_NgayNhapXuat.Properties.Appearance.Options.UseFont = true;
-            this.dateEdit_NgayNhapXuat.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit_NgayNhapXuat.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit_NgayNhapXuat.Size = new System.Drawing.Size(228, 28);
-            this.dateEdit_NgayNhapXuat.TabIndex = 32;
+            this.txt_MaChiTiet.AutoSize = true;
+            this.txt_MaChiTiet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txt_MaChiTiet.Location = new System.Drawing.Point(176, 47);
+            this.txt_MaChiTiet.Name = "txt_MaChiTiet";
+            this.txt_MaChiTiet.Size = new System.Drawing.Size(59, 20);
+            this.txt_MaChiTiet.TabIndex = 30;
+            this.txt_MaChiTiet.Text = "02463";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.Location = new System.Drawing.Point(25, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 20);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "Mã hoá đơn";
+            // 
+            // label_ViTri
+            // 
+            this.label_ViTri.AutoSize = true;
+            this.label_ViTri.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label_ViTri.Location = new System.Drawing.Point(25, 259);
+            this.label_ViTri.Name = "label_ViTri";
+            this.label_ViTri.Size = new System.Drawing.Size(51, 20);
+            this.label_ViTri.TabIndex = 27;
+            this.label_ViTri.Text = "Loại ";
+            // 
+            // cbo_LoaiGiaoDich
+            // 
+            this.cbo_LoaiGiaoDich.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbo_LoaiGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.cbo_LoaiGiaoDich.FormattingEnabled = true;
+            this.cbo_LoaiGiaoDich.Items.AddRange(new object[] {
+            "Nhập",
+            "Xuất"});
+            this.cbo_LoaiGiaoDich.Location = new System.Drawing.Point(180, 258);
+            this.cbo_LoaiGiaoDich.Name = "cbo_LoaiGiaoDich";
+            this.cbo_LoaiGiaoDich.Size = new System.Drawing.Size(228, 28);
+            this.cbo_LoaiGiaoDich.TabIndex = 28;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Location = new System.Drawing.Point(25, 121);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Tên vật tư";
+            // 
+            // txt_SoLuong
+            // 
+            this.txt_SoLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txt_SoLuong.Location = new System.Drawing.Point(180, 164);
+            this.txt_SoLuong.Name = "txt_SoLuong";
+            this.txt_SoLuong.Size = new System.Drawing.Size(228, 27);
+            this.txt_SoLuong.TabIndex = 24;
+            // 
+            // label_Nguong
+            // 
+            this.label_Nguong.AutoSize = true;
+            this.label_Nguong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label_Nguong.Location = new System.Drawing.Point(25, 213);
+            this.label_Nguong.Name = "label_Nguong";
+            this.label_Nguong.Size = new System.Drawing.Size(138, 20);
+            this.label_Nguong.TabIndex = 6;
+            this.label_Nguong.Text = "Ngày nhập xuất";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label11.Location = new System.Drawing.Point(25, 167);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(88, 20);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Số Lượng";
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Font = new System.Drawing.Font("Tahoma", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MenuManager = this.barManager1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(1301, 305);
+            this.gridControl1.TabIndex = 1;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Appearance.FilterPanel.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.gridView1.Appearance.FilterPanel.Options.UseFont = true;
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.OptionsFind.FindNullPrompt = "Nhập dữ liệu muốn tìm...";
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "In";
+            this.barButtonItem2.Id = 6;
+            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.barButtonItem2.Name = "barButtonItem2";
             // 
             // FormChiTietNhapXuat
             // 
@@ -465,7 +467,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormChiTietNhapXuat";
-            this.Text = "FormChiTietNhapXuat";
+            this.Text = "Chi tiết nhập/xuất kho";
             this.Load += new System.EventHandler(this.FormChiTietNhapXuat_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -473,12 +475,12 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayNhapXuat.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayNhapXuat.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,7 +496,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label_ViTri;
         private System.Windows.Forms.ComboBox cbo_LoaiGiaoDich;
-        private System.Windows.Forms.TextBox txt_TenVatTu;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_SoLuong;
         private System.Windows.Forms.Label label_Nguong;
@@ -522,5 +523,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraEditors.DateEdit dateEdit_NgayNhapXuat;
+        private System.Windows.Forms.Label txt_TenVatTu;
     }
 }

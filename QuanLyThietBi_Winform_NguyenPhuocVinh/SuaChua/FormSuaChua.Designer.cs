@@ -732,7 +732,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormSuaChua";
-            this.Text = "FormSuaChua";
+            this.Text = "Sửa chữa thiết bị";
             this.Load += new System.EventHandler(this.FormSuaChua_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).EndInit();

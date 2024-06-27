@@ -1,4 +1,6 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +22,8 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         {
             InitializeComponent();
             mySQLConnector = new MySQLConnector();
+            gridView1.CustomDrawCell += GridView1_CustomDrawCell;
+
         }
 
         private MySQLConnector mySQLConnector;
@@ -88,6 +92,9 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 JOIN ViTriDat ON ThietBi.MaViTri = ViTriDat.MaViTri";
                 DataTable dataTable = mySQLConnector.Select(query);
                 gridControl1.DataSource = dataTable;
+
+
+
             }
             catch (Exception ex)
             {
@@ -314,6 +321,56 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 
 
         }
+        private void GridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view != null)
+            {
+                if (e.Column.FieldName == "TinhTrang")
+                {
+                    string status = e.CellValue?.ToString();
+                    switch (status)
+                    {
+                        case "Đang sửa chửa":
+                            e.Appearance.BackColor = Color.Orange;
+                            break;
+                        case "Đang bảo trì":
+                            e.Appearance.BackColor = Color.Yellow;
+                            break;
+                        case "Đang hoạt động":
+                            e.Appearance.BackColor = Color.Green;
+                            break;
+                        default:
+                            e.Appearance.BackColor = Color.White;
+                            break;
+                    }
+                }
+                else if (e.Column.FieldName == "CanhBao")
+                {
+                    string status = e.CellValue?.ToString();
+                    // Perform your logic for coloring based on the content of the "CanhBao" column
+                    // For example:
+                    if (status.Contains("Hôm nay"))
+                    {
+                        e.Appearance.BackColor = Color.Orange;
+                    }
+                    else if (status.Contains("Còn"))
+                    {
+                        e.Appearance.BackColor = Color.Yellow;
+                    }
+                    else if (status.Contains("Quá hạn"))
+                    {
+                        e.Appearance.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        // Set default color
+                        e.Appearance.BackColor = Color.White;
+                    }
+                }
+            }
+        }
+
 
         private void btn_TaoQr_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

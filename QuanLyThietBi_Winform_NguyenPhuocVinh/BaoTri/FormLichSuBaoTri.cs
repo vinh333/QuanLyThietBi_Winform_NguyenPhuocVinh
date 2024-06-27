@@ -16,6 +16,8 @@ using iTextSharp.text.pdf.parser;
 using Microsoft.Office.Interop.Word;
 using DevExpress.Utils.DirectXPaint;
 using Mysqlx.Crud;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 {
     public partial class FormLichSuBaoTri : DevExpress.XtraEditors.XtraForm
@@ -49,6 +51,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         {
             _showHide(true);
             gridView1.OptionsBehavior.Editable = false; // Chặn chỉnh sửa trực tiếp
+            gridView1.CustomDrawCell += GridView1_CustomDrawCell;
 
             LoadData();
 
@@ -203,8 +206,8 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa dòng này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 DataRow row = gridView1.GetDataRow(rowIndex);
-                int MaLichSuThietBi = Convert.ToInt32(row["MaLichSuThietBi"]);
-                string query = $"DELETE FROM ThietBi WHERE MaLichSuThietBi = {MaLichSuThietBi}";
+                int MaLichSuBaoTri = Convert.ToInt32(row["MaLichSuBaoTri"]);
+                string query = $"DELETE FROM lichsubaotri WHERE MaLichSuBaoTri = {MaLichSuBaoTri}";
                 mySQLConnector.ExecuteQuery(query);
                 LoadData(); // Hàm LoadData() dùng để load lại dữ liệu sau khi xóa
             }
@@ -426,7 +429,53 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             txt_TenBienBanBaoTri.Text = "Chưa có tệp tin";
             picHinhAnhBaoTri.Image = Properties.Resources.nonimg;
         }
-
+        private void GridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.Column.FieldName == "TienDo")
+            {
+                string status = e.CellValue?.ToString();
+                // Perform your logic for coloring based on the content of the "CanhBao" column
+                // For example:
+                if (status.Contains("Đang"))
+                {
+                    e.Appearance.BackColor = Color.Yellow;
+                }
+                else if (status.Contains("Hoàn tất"))
+                {
+                    e.Appearance.BackColor = Color.Green;
+                }
+                
+                else
+                {
+                    // Set default color
+                    e.Appearance.BackColor = Color.White;
+                }
+            }
+            if (e.Column.FieldName == "TrangThai")
+            {
+                string status = e.CellValue?.ToString();
+                // Perform your logic for coloring based on the content of the "CanhBao" column
+                // For example:
+                if (status.Contains("Trễ"))
+                {
+                    e.Appearance.BackColor = Color.Red;
+                }
+                else if (status.Contains("Còn"))
+                {
+                    e.Appearance.BackColor = Color.LightGreen;
+                }
+                else if (status.Contains("Đúng"))
+                {
+                    e.Appearance.BackColor = Color.Green;
+                }
+                else
+                {
+                    // Set default color
+                    e.Appearance.BackColor = Color.White;
+                }
+            }
+        }
 
 
         private void picHinhAnh_Click(object sender, EventArgs e)

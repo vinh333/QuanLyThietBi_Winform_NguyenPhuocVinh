@@ -264,7 +264,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormLoaiThietBi";
-            this.Text = "FormLoaiThietBi";
+            this.Text = "Loại thiết bị";
             this.Load += new System.EventHandler(this.FormLoaiThietBi_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

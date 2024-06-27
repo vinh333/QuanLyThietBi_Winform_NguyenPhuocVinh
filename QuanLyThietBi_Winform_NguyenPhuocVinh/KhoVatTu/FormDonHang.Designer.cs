@@ -50,8 +50,9 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btn_TaoQr = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.picHinhAnh = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_NhaCungCap = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.cbo_TrangThaiNhapKho = new System.Windows.Forms.ComboBox();
             this.label_TrangThaiNhapKho = new System.Windows.Forms.Label();
             this.cbo_TrangThaiDonHang = new System.Windows.Forms.ComboBox();
@@ -67,19 +68,18 @@
             this.label_Nguong = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.picHinhAnh = new System.Windows.Forms.PictureBox();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txt_NhaCungCap = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picHinhAnh)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHinhAnh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -150,7 +150,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Caption = "Sửa";
+            this.btnSua.Caption = "Cập nhật đơn hàng";
             this.btnSua.Id = 1;
             this.btnSua.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSua.ImageOptions.SvgImage")));
             this.btnSua.Name = "btnSua";
@@ -276,17 +276,6 @@
             this.barButtonItem3.Id = 13;
             this.barButtonItem3.Name = "barButtonItem3";
             // 
-            // picHinhAnh
-            // 
-            this.picHinhAnh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picHinhAnh.Image = global::QuanLyThietBi_Winform_NguyenPhuocVinh.Properties.Resources.nonimg;
-            this.picHinhAnh.Location = new System.Drawing.Point(50, 34);
-            this.picHinhAnh.Name = "picHinhAnh";
-            this.picHinhAnh.Size = new System.Drawing.Size(297, 308);
-            this.picHinhAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picHinhAnh.TabIndex = 27;
-            this.picHinhAnh.TabStop = false;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txt_NhaCungCap);
@@ -311,6 +300,24 @@
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin vật tư";
+            // 
+            // txt_NhaCungCap
+            // 
+            this.txt_NhaCungCap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txt_NhaCungCap.Location = new System.Drawing.Point(178, 222);
+            this.txt_NhaCungCap.Name = "txt_NhaCungCap";
+            this.txt_NhaCungCap.Size = new System.Drawing.Size(228, 27);
+            this.txt_NhaCungCap.TabIndex = 41;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label4.Location = new System.Drawing.Point(23, 225);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(124, 20);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "Nhà cung cấp";
             // 
             // cbo_TrangThaiNhapKho
             // 
@@ -473,8 +480,19 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gridControl1);
             this.splitContainer1.Size = new System.Drawing.Size(1404, 659);
-            this.splitContainer1.SplitterDistance = 393;
+            this.splitContainer1.SplitterDistance = 535;
             this.splitContainer1.TabIndex = 9;
+            // 
+            // picHinhAnh
+            // 
+            this.picHinhAnh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picHinhAnh.Image = global::QuanLyThietBi_Winform_NguyenPhuocVinh.Properties.Resources.buon_lau_phao;
+            this.picHinhAnh.Location = new System.Drawing.Point(35, 34);
+            this.picHinhAnh.Name = "picHinhAnh";
+            this.picHinhAnh.Size = new System.Drawing.Size(337, 308);
+            this.picHinhAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picHinhAnh.TabIndex = 27;
+            this.picHinhAnh.TabStop = false;
             // 
             // gridControl1
             // 
@@ -484,7 +502,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1404, 262);
+            this.gridControl1.Size = new System.Drawing.Size(1404, 120);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -501,6 +519,7 @@
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.GridView1_CustomDrawCell);
             // 
             // barButtonItem2
             // 
@@ -508,24 +527,6 @@
             this.barButtonItem2.Id = 6;
             this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
             this.barButtonItem2.Name = "barButtonItem2";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label4.Location = new System.Drawing.Point(23, 225);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 20);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "Nhà cung cấp";
-            // 
-            // txt_NhaCungCap
-            // 
-            this.txt_NhaCungCap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_NhaCungCap.Location = new System.Drawing.Point(178, 222);
-            this.txt_NhaCungCap.Name = "txt_NhaCungCap";
-            this.txt_NhaCungCap.Size = new System.Drawing.Size(228, 27);
-            this.txt_NhaCungCap.TabIndex = 41;
             // 
             // FormDonHang
             // 
@@ -538,17 +539,17 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormDonHang";
-            this.Text = "FormDonHang";
+            this.Text = "Đơn hàng";
             this.Load += new System.EventHandler(this.FormDonHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picHinhAnh)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picHinhAnh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
@@ -573,7 +574,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.PictureBox picHinhAnh;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txt_MaDonHang;
         private System.Windows.Forms.Label label2;
@@ -601,5 +601,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private System.Windows.Forms.TextBox txt_NhaCungCap;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox picHinhAnh;
     }
 }

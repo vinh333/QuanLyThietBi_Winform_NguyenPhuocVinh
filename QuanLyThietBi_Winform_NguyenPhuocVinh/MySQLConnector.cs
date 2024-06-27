@@ -48,7 +48,29 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
                 return false;
             }
         }
+        public DataTable Select(string query, Dictionary<string, object> parameters)
+        {
+            DataTable dataTable = new DataTable();
+            string connectionString = $"server={server};port={port};database={database};uid={username};password={password};";
 
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
+                    }
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
         public bool CloseConnection()
         {
             try

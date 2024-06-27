@@ -187,7 +187,7 @@
             this.groupControl5.Controls.Add(this.label25);
             this.groupControl5.Location = new System.Drawing.Point(28, 347);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(297, 125);
+            this.groupControl5.Size = new System.Drawing.Size(313, 125);
             this.groupControl5.TabIndex = 44;
             this.groupControl5.Text = "Thông tin thiết bị";
             // 
@@ -237,7 +237,7 @@
             this.picHinhAnhThietBi.Image = global::QuanLyThietBi_Winform_NguyenPhuocVinh.Properties.Resources.nonimg;
             this.picHinhAnhThietBi.Location = new System.Drawing.Point(28, 22);
             this.picHinhAnhThietBi.Name = "picHinhAnhThietBi";
-            this.picHinhAnhThietBi.Size = new System.Drawing.Size(297, 308);
+            this.picHinhAnhThietBi.Size = new System.Drawing.Size(313, 308);
             this.picHinhAnhThietBi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picHinhAnhThietBi.TabIndex = 43;
             this.picHinhAnhThietBi.TabStop = false;
@@ -485,6 +485,7 @@
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.GridView1_CustomDrawCell);
             // 
             // barManager1
             // 
@@ -795,7 +796,7 @@
             this.Controls.Add(this.barDockControl4);
             this.Controls.Add(this.barDockControl3);
             this.Name = "FormLichSuSuaChua";
-            this.Text = "FormLichSuSuaChua";
+            this.Text = "Lịch sử sửa chữa";
             this.Load += new System.EventHandler(this.FormSuaChua_Load);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);

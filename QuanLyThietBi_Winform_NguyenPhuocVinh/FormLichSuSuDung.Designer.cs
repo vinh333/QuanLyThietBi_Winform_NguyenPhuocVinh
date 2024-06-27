@@ -41,7 +41,7 @@
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
-            this.btnIn = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_TraThietBi = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -126,7 +126,7 @@
             this.btnXoa,
             this.btnHuy,
             this.btnThoat,
-            this.btnIn,
+            this.btn_TraThietBi,
             this.txt_timkiem,
             this.barButtonItem1,
             this.btn_TaoQr,
@@ -150,7 +150,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLuu, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_TraThietBi, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -203,12 +203,13 @@
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThoat_ItemClick);
             // 
-            // btnIn
+            // btn_TraThietBi
             // 
-            this.btnIn.Caption = "In";
-            this.btnIn.Id = 6;
-            this.btnIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIn.ImageOptions.SvgImage")));
-            this.btnIn.Name = "btnIn";
+            this.btn_TraThietBi.Caption = "Trả thiết bị";
+            this.btn_TraThietBi.Id = 6;
+            this.btn_TraThietBi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_TraThietBi.ImageOptions.SvgImage")));
+            this.btn_TraThietBi.Name = "btn_TraThietBi";
+            this.btn_TraThietBi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_TraThietBi_Click);
             // 
             // bar3
             // 
@@ -312,18 +313,20 @@
             // 
             // dtp_NgayKetThuc
             // 
+            this.dtp_NgayKetThuc.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dtp_NgayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_NgayKetThuc.Location = new System.Drawing.Point(508, 80);
             this.dtp_NgayKetThuc.Name = "dtp_NgayKetThuc";
-            this.dtp_NgayKetThuc.Size = new System.Drawing.Size(200, 23);
+            this.dtp_NgayKetThuc.Size = new System.Drawing.Size(200, 28);
             this.dtp_NgayKetThuc.TabIndex = 26;
             // 
             // dtp_NgayBatDau
             // 
+            this.dtp_NgayBatDau.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dtp_NgayBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_NgayBatDau.Location = new System.Drawing.Point(508, 38);
             this.dtp_NgayBatDau.Name = "dtp_NgayBatDau";
-            this.dtp_NgayBatDau.Size = new System.Drawing.Size(200, 23);
+            this.dtp_NgayBatDau.Size = new System.Drawing.Size(200, 28);
             this.dtp_NgayBatDau.TabIndex = 25;
             // 
             // label5
@@ -433,7 +436,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormLichSuSuDung";
-            this.Text = "FormLichSuSuDung";
+            this.Text = "Lịch sử sử dụng";
             this.Load += new System.EventHandler(this.FormDanhSachThietBi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -465,7 +468,7 @@
         private DevExpress.XtraBars.BarButtonItem btn_TaoQr;
         private DevExpress.XtraBars.BarButtonItem btnHuy;
         private DevExpress.XtraBars.BarButtonItem btnThoat;
-        private DevExpress.XtraBars.BarButtonItem btnIn;
+        private DevExpress.XtraBars.BarButtonItem btn_TraThietBi;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;

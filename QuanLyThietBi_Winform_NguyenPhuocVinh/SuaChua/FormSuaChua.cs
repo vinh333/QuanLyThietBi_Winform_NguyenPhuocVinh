@@ -17,6 +17,8 @@ using Microsoft.Office.Interop.Word;
 using DevExpress.Utils.DirectXPaint;
 using Mysqlx.Crud;
 using QuanLyThietBi_Winform_NguyenPhuocVinh;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 {
     public partial class FormSuaChua : DevExpress.XtraEditors.XtraForm
@@ -25,6 +27,9 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
         {
             InitializeComponent();
             mySQLConnector = new MySQLConnector();
+
+            gridView1.CustomDrawCell += GridView1_CustomDrawCell;
+
         }
 
         private MySQLConnector mySQLConnector;
@@ -117,7 +122,7 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
 
                 // Lấy bản ghi sửa chửa mới nhất cho thiết bị đã chọn
                 string queryLatestMaintenance = $@"
-            SELECT MaLichSuSuaChua, NgaySuaChua, MoTa, TrangThai, TienDo, HinhAnhSuaChua, BienBanSuaChua, TenBienBanSuaChua, MAKTV
+            SELECT MaLichSuSuaChua, NgaySuaChua, MoTa, TienDo, HinhAnhSuaChua, BienBanSuaChua, TenBienBanSuaChua, MAKTV
                 FROM lichsuSuaChua
                 WHERE MaThietBi = {maThietBi} AND TienDo = 'Đang sửa chửa'
                 ORDER BY NgaySuaChua DESC
@@ -448,8 +453,30 @@ namespace QuanLyThietBi_Winform_NguyenPhuocVinh
             btnIn.Enabled = kt;
 
         }
+        private void GridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view != null && e.Column.FieldName == "TinhTrang")
+            {
+                string status = e.CellValue?.ToString();
+                switch (status)
+                {
+                    case "Đang sửa chửa":
+                        e.Appearance.BackColor = Color.Orange;
+                        break;
+                    case "Đang bảo trì":
+                        e.Appearance.BackColor = Color.Yellow;
+                        break;
+                    case "Đang hoạt động":
+                        e.Appearance.BackColor = Color.Green;
+                        break;
+                    default:
+                        e.Appearance.BackColor = Color.White;
+                        break;
+                }
+            }
+        }
 
-        
 
     }
 }

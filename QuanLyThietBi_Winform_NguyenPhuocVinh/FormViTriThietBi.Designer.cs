@@ -264,7 +264,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormViTriThietBi";
-            this.Text = "FormViTriThietBi";
+            this.Text = "Vị trí thiết bị";
             this.Load += new System.EventHandler(this.FormViTriThietBi_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

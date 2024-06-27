@@ -757,7 +757,7 @@
             this.Controls.Add(this.barDockControl2);
             this.Controls.Add(this.barDockControl1);
             this.Name = "FormBaoTri";
-            this.Text = "FormBaoTri";
+            this.Text = "Bảo trì thiết bị";
             this.Load += new System.EventHandler(this.FormBaoTri_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
